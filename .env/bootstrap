@@ -5,4 +5,6 @@ COMPONENT=$1
 SCOPE=$ENVDIR/$COMPONENT
 
 # Run bootstrap.sh from each component or from supplied component
-find $SCOPE -name bootstrap.sh | xargs bash
+for bootstrapper in $(find $SCOPE -name bootstrap.sh); do
+  bash "$bootstrapper"
+done
