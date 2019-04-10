@@ -8,7 +8,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
+source $HOME/.env/source
 
 export PATH=/home/jarred/.npm-global/bin:/opt/gradle/gradle-3.4.1/bin:$PATH
 source $HOME/.cargo/env
