@@ -1,1 +1,1 @@
-source ./.tools/spacevim/vimrc
+source $HOME/.tools/spacevim/vimrc
