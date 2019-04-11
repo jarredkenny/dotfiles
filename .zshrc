@@ -1,10 +1,9 @@
-export ZSH=/home/jarred/.oh-my-zsh
-ZSH_THEME="agnoster"
-DEFAULT_USER=$USER
+export ZSH=$HOME/.tools/oh-my-zsh
+export ZSH_THEME="agnoster"
+export DEFAULT_USER=$USER
 
 plugins=(
   git
-  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
