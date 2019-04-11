@@ -1,7 +1,13 @@
-alias lsd="ls -ltrh"
-alias fuck='sudo !!'
-alias fucking='sudo'
-alias gitlog='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
-alias how="curl cht.sh/"
+# Aliases for managing dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias bootstrap='$HOME/.env/bootstrap'
 
+# Additional Aliases
+alias lsd="ls -ltrh"
+alias fuck='sudo $(fc -ln -1)'
+alias fucking='sudo'
+alias gl='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
+alias cln='git clone' 
+
+# Force myself to learn vim
+alias nano='vim'
