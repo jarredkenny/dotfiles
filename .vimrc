@@ -1,0 +1,1 @@
+source ./.tools/spacevim/vimrc
