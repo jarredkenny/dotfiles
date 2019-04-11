@@ -1,0 +1,7 @@
+alias lsd="ls -ltrh"
+alias fuck='sudo !!'
+alias fucking='sudo'
+alias gitlog='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
+alias how="curl cht.sh/"
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
