@@ -34,3 +34,18 @@ auto-completion-tab-key-behavior = "smart"
 name = 'shell'
 default_position = 'top'
 default_height = 30
+
+[[layers]]
+name = 'lang#javascript'
+
+[[layers]]
+name = "denite"
+
+[[layers]]
+name = "git"
+
+[[layers]]
+name = "lang#nim"
+
+[[layers]]
+name = "lang#python"

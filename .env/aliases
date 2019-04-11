@@ -3,6 +3,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias bootstrap='$HOME/.env/bootstrap'
 
 # Additional Aliases
+alias e='vim'
 alias lsd="ls -ltrh"
 alias fuck='sudo $(fc -ln -1)'
 alias fucking='sudo'
