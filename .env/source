@@ -3,6 +3,7 @@
 ENVDIR="$( cd "$( dirname "$0" )" && pwd )"
 
 source $ENVDIR/aliases
+config config status.showUntrackedFiles no
 
 # Source env.zsh from each component or from supplied component
 for envfile in $(find $ENVDIR -name env.zsh); do
