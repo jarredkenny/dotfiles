@@ -8,7 +8,11 @@ alias lsd="ls -ltrh"
 alias fuck='sudo $(fc -ln -1)'
 alias fucking='sudo'
 alias gl='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
-alias cln='git clone' 
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gs='git status'
+alias cln='git clone'
+
 
 # Force myself to learn vim
 alias nano='vim'
