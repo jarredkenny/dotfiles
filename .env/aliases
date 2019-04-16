@@ -9,6 +9,7 @@ alias fuck='sudo $(fc -ln -1)'
 alias fucking='sudo'
 alias gl='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
 alias cln='git clone' 
+alias co='git checkout' 
 
 # Force myself to learn vim
 alias nano='vim'
