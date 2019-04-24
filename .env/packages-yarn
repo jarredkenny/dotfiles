@@ -3,3 +3,4 @@ eslint-cli
 prettier
 serve
 @vue/cli
+@vue/cli-init
