@@ -52,3 +52,6 @@ name = "lang#nim"
 
 [[layers]]
 name = "lang#python"
+
+[[layers]]
+name = "lang#vue"
