@@ -2,7 +2,7 @@
 
 ENVDIR="$( cd "$( dirname "$0" )" && pwd )"
 
-export PATH="$HOME/.env/bin:$PATH"
+export PATH="$HOME/.env/bin:$HOME/.tools/bin:$PATH"
 
 source $ENVDIR/aliases
 config config status.showUntrackedFiles no

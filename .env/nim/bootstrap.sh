@@ -4,4 +4,10 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 echo "> Bootstraping Nim"
 
-$DIR/choosenim-0.3.2_linux_amd64 --choosenimDir:$HOME/.tools/choosenim --nimbleDir:$HOME/.tools/nimble stable -y
+RELEASE=$(curl -s https://api.github.com/repos/dom96/choosenim/releases/latest | grep browser_download_url | grep linux | cut -d '"' -f 4)
+wget -P $DIR $RELEASE
+chmod +x $DIR/choosenim*
+BINARY=$(find $DIR | grep choosenim | head -n 1)
+$BINARY --choosenimDir:$HOME/.tools/choosenim --nimbleDir:$HOME/.tools/nimble stable -y
+mkdir -p $HOME/.tools/bin
+mv $BINARY $HOME/.tools/bin/choosenim
