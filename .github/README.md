@@ -6,7 +6,7 @@
 
 ```bash
 git clone --bare git@github.com:jarredkenny/dotfiles.git $HOME/.dotfiles && \
-git --git-dir=$HOME/.dorfiles --work-tree=$HOME checkout && \
+git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout && \
 $HOME/.env/bootstrap && \
 source $HOME/.env/source
 ```
