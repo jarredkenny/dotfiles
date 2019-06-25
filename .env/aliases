@@ -17,6 +17,11 @@ alias gds='git diff --staged'
 alias gs='git status'
 alias gaa='git add -A .'
 alias gcm='git commit -m '
+alias gp='git push'
+alias gpl='git pull'
+
+# Docker
+dc='docker-compose'
 
 # Force myself to learn vim
 alias nano='vim'
