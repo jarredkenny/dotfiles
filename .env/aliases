@@ -2,6 +2,10 @@
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias bootstrap='$HOME/.env/bootstrap'
 
+alias cpl='config pull'
+alias cph='config push'
+alias ca='config add'
+
 # Additional Aliases
 alias e='vim'
 alias lsd="ls -ltrh"
@@ -21,7 +25,7 @@ alias gp='git push'
 alias gpl='git pull'
 
 # Docker
-dc='docker-compose'
+alias dc='docker-compose'
 
 # Force myself to learn vim
 alias nano='vim'
