@@ -26,6 +26,8 @@ alias gpl='git pull'
 
 # Docker
 alias dc='docker-compose'
+alias dvp='docker volume prune'
+alias dsp='docker system prune'
 
 # Force myself to learn vim
 alias nano='vim'
