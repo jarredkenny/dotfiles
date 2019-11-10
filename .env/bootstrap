@@ -6,5 +6,7 @@ SCOPE=$ENVDIR/$COMPONENT
 
 # Run bootstrap.sh from each component or from supplied component
 for bootstrapper in $(find $SCOPE -name bootstrap.sh); do
+  MODULE=`echo $bootstrapper | sed 's/'"${ENVDIR//\//\\\/}"'\///' | sed 's/\/bootstrap.sh//'`
+  echo "> Bootstraping $MODULE"
   bash "$bootstrapper"
 done

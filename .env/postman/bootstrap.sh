@@ -2,7 +2,6 @@
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-echo "> Bootstraping Postman"
 
 wget -O $DIR/Postman.tar.gz https://dl.pstmn.io/download/latest/linux64
 

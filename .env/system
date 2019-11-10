@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+echo "Requires root, sudo please?"
+sudo echo
+echo "Thanks!"
+
+# Install packages from packages-system
+SYSTEM_PACKAGES=$(cat $DIR/packages-system | sed 's/\\n/ /')
+sudo dnf install -y $SYSTEM_PACKAGES
+
+# Set default shell for user
+usermod --shell /usr/bin/zsh $USER
