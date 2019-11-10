@@ -11,4 +11,4 @@ SYSTEM_PACKAGES=$(cat $DIR/packages-system | sed 's/\\n/ /')
 sudo dnf install -y $SYSTEM_PACKAGES
 
 # Set default shell for user
-usermod --shell /usr/bin/zsh $USER
+sudo usermod --shell /usr/bin/zsh $USER
