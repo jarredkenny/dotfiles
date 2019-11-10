@@ -8,6 +8,8 @@ chmod +x $DIR/miniconda.sh
 
 $DIR/miniconda.sh -b -p $HOME/.tools/miniconda -u
 
+rm $DIR/miniconda.sh
+
 conda config --add channels conda-forge 
 
 PIP_PACKAGES=$(cat $DIR/../packages-pip | sed 's/\\n/ /')
