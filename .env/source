@@ -8,6 +8,9 @@ source $ENVDIR/aliases
 config config status.showUntrackedFiles no
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 
+git config --global user.email "jarred@jarredkenny.com"
+git config --global user.name "Jarred Kenny"
+
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
