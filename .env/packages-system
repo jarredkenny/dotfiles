@@ -2,3 +2,7 @@ gcc
 g++
 make
 zsh
+gnome-tweak-tool
+chromium
+chrome-gnome-shell
+jq

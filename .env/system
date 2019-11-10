@@ -18,3 +18,5 @@ sudo dnf install -y $SYSTEM_PACKAGES
 
 # Set default shell for user
 sudo usermod --shell /usr/bin/zsh $USER
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
