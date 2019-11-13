@@ -14,3 +14,7 @@ export LAUNCH4J_HOME="/home/jarred/Apps/launch4j/"
 export JAVA_HOME=/usr/lib/jvm/java
 
 export PATH="/usr/lib/jvm/java/bin:$PATH"
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
