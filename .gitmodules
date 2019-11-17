@@ -1,3 +1,7 @@
 [submodule ".icons/la-capitaine-icon-theme"]
 	path = .icons/la-capitaine-icon-theme
-	url = https://github.com/keeferrourke/la-capitaine-icon-theme.git
+  url = https://github.com/keeferrourke/la-capitaine-icon-theme.git
+
+[submodule ".vim/bundle/Vundle.vim"]
+  path = .vim/bundle/Vundle
+  url = https://github.com/VundleVim/Vundle.vim.git
