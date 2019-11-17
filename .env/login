@@ -1,3 +1,0 @@
-#!/bin/bash
-#gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-#gsettings set org.gnome.desktop.background picture-uri "'file://$HOME/Pictures/Wallpapers/wallpaper.jpg'"
