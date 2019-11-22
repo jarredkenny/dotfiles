@@ -31,3 +31,5 @@ alias dsp='docker system prune'
 
 # Force myself to learn vim
 alias nano='vim'
+
+alias cat='bat'
