@@ -11,6 +11,7 @@ sudo dnf install \
 #Enable Coprs
 dnf copr enable gregw/i3desktop
 dnf copr enable mhartgring/polybar
+dnf copr enable nforro/i3-gaps
 
 # Install packages from packages-system
 SYSTEM_PACKAGES=$(cat $DIR/packages-system | sed 's/\\n/ /')

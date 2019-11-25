@@ -11,3 +11,7 @@ rofi
 i3blocks
 i3lock-color
 polybar
+cmake
+feh
+compton
+bat
