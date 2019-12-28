@@ -6,12 +6,5 @@ gnome-tweak-tool
 chrome-gnome-shell
 jq
 feh
-i3-gaps
-rofi
-i3blocks
-i3lock-color
-polybar
 cmake
-feh
-compton
 bat
