@@ -7,7 +7,8 @@ alias cph='config push'
 alias ca='config add'
 
 # Additional Aliases
-alias e='vim'
+alias e='nvim'
+alias vim='nvim'
 alias lsd="ls -ltrh"
 alias fuck='sudo $(fc -ln -1)'
 alias fucking='sudo'
