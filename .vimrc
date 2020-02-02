@@ -79,3 +79,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " Consider node_modules to be in PATH
 let $PATH = system('yarn bin')[:-2] . ':' . $PATH
+
+" Force .nim files to filestype=nim and syntax=nim
+au BufNewFile,BufRead,BufReadPost *.nim set syntax=nim filetype=nim
