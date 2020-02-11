@@ -34,6 +34,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'zah/nim.vim'
+Plugin 'rodjek/vim-puppet'
 
 call vundle#end()
 filetype plugin indent on
@@ -82,3 +83,7 @@ let $PATH = system('yarn bin')[:-2] . ':' . $PATH
 
 " Force .nim files to filestype=nim and syntax=nim
 au BufNewFile,BufRead,BufReadPost *.nim set syntax=nim filetype=nim
+
+" Force syntax highlighting for puppet files
+au BufNewFile,BufRead,BufReadPost *.pp set syntax=puppet filetype=puppet
+au BufNewFile,BufRead,BufReadPost Puppetfile set syntax=puppet filetype=puppet
