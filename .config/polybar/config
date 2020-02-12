@@ -1,8 +1,8 @@
 [colors]
-background = #000000
+background = #1d1f21
 background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #555
+foreground = #ffffff
+foreground-alt = #dadada
 underline = #555
 primary = #ffb52a
 secondary = #e60053
@@ -28,14 +28,14 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 6
-padding-right = 6 
+padding-right = 6
 
-module-margin-left = 4
-module-margin-right = 4
+module-margin-left = 2
+module-margin-right = 2
 
-font-0 = FontAwesome:size=10;0
-font-1 = FontAwesome5Free:size=9;0
-font-2 = pango:Monaco:fontformat=truetype:size=10:antialias=true;0
+font-0 = FontAwesome:size=10;
+font-1 = Hack:size=10;
+font-2 = Hack:size=10;
 
 modules-left = workspaces 
 ;modules-center = 

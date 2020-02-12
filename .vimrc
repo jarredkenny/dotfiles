@@ -41,7 +41,6 @@ filetype plugin indent on
 
 " Color Scheme
 set termguicolors
-let ayucolor = "mirage"
 colorscheme ayu
 
 " netrw
@@ -71,7 +70,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_nim_checkers = ['nim']
 
 " Airline Theme
-let g:airline_theme='ayu_mirage'
+let g:airline_theme='base16_tomorrow'
 let g:airline_powerline_fonts = 1
 
 " Prettier
