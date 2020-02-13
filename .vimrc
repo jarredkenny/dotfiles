@@ -35,13 +35,14 @@ Plugin 'ayu-theme/ayu-vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'zah/nim.vim'
 Plugin 'rodjek/vim-puppet'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on
 
 " Color Scheme
 set termguicolors
-colorscheme ayu
+colorscheme base16-default-dark
 
 " netrw
 let g:netrw_winsize = -28
