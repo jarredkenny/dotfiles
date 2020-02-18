@@ -55,7 +55,7 @@ fixed-center = true
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-line-size = 5
+line-size = 2
 line-color = ${colors.grey}
 
 border-size = 0
@@ -74,7 +74,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=12;1"
 
 modules-left = workspaces title
-modules-right = alsa wlan eth openvpn battery date
+modules-right = spotify wlan eth openvpn battery date
 
 tray-scale = 1.0
 tray-position = right
@@ -318,10 +318,7 @@ menu-2-1-exec = menu-open-0
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = " "
-format-prefix-foreground = ${colors.fg}
-format = <label>
-exec = python ~/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}'
+exec = ~/.i3/now-playing.sh
 format-underline = ${colors.red}
 
 [settings]
