@@ -24,8 +24,6 @@
 ;  // Music Note
 ;  // Lock Circle
 
-
-
 [colors]
 bg = #ff1d1f21
 fg = #f6f3e8
@@ -45,12 +43,10 @@ urgent = #e5786d
 urgent_light = #ffa99b
 urgent_dark = #af4942
 
-
-
 [bar/top]
-dpi = 200
+;dpi = 200
 width = 100%
-height = 64
+;height = 64
 offset-x = 0
 offset-y = 0
 radius = 0.0
@@ -141,23 +137,20 @@ label-urgent = "%icon%"
 label-urgent-background = ${colors.urgent_light}
 label-urgent-foreground = ${colors.urgent}
 label-urgent-underline = ${colors.urgent_dark}
+label-urgent-padding = 4
 
 label-visible = "%icon%"
 label-visible-padding = 4
 label-visible-foreground = ${colors.bg}
 label-visible-background = ${colors.fg}
 
-
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;﬏
 ws-icon-3 = 4;
 ws-icon-4 = 5;
-ws-icon-5 = 6;6
-ws-icon-6 = 7;7
-ws-icon-7 = 8;8
-ws-icon-8 = 9;9
-ws-icon-9 = 10;阮
+ws-icon-5 = 6;
+ws-icon-6 = 7;
 
 [module/memory]
 type = internal/memory

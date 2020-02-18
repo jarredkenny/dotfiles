@@ -1,0 +1,32 @@
+#!/bin/bash
+
+##
+# ALL SYSTEMS
+##
+
+# Set wallpaper
+feh --bg-fill ~/Pictures/Wallpaper/wallpaper.jpg
+
+
+# Merge .Xresources
+xrdb -merge~/.Xresources
+
+
+# Laptop
+
+# Configure Trackpad
+synclient \
+	HorizEdgeScroll=1 \
+	HorizScrollDelta=-100 \
+	VertEdgeScroll=1 \
+	VertScrollDelta=-100 \
+	TapButton1=1 \
+	TapButton2=3 \
+	PalmDetect=1 \
+	VertTwoFingerScroll=1 \
+	HorizTwoFingerScroll=1
+
+# Configure Displays
+xrandr \
+  --output DP-1 --mode 1920x1080 --pos 0x0 --rotate left \
+  --output DP-2 --primary --mode 1920x1080 --pos 1080x357 --rotate normal \
