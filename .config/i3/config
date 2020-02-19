@@ -189,6 +189,8 @@ bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
 bindsym XF86AudioMute exec amixer sset Master toggle
 
+focus_follows_mouse no
+
 # Startup
 exec_always --no-startup-id ~/.env/setup
 exec_always --no-startup-id .i3/polybar.sh
