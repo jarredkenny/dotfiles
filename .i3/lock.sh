@@ -1,8 +1,12 @@
 #!/bin/bash
 
-IMG=/tmp/lock.png
+IMAGE=/tmp/i3lock.png
 
-maim $IMG
-convert $IMG -blur 2x8 $IMG
-i3lock -i $IMG
-rm $IMG
+maim $IMAGE
+
+convert $IMAGE -scale 10% -blur 0x1 -resize 1000% $IMAGE
+
+
+i3lock -i $IMAGE
+
+rm $IMAGE

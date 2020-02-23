@@ -14,7 +14,7 @@ sudo dnf install \
 # dnf copr enable nforro/i3-gaps
 
 # Install packages from packages-system
-SYSTEM_PACKAGES=$(cat $DIR/packages-system | sed 's/\\n/ /')
+SYSTEM_PACKAGES=$(cat $DIR/packages/system | sed 's/\\n/ /')
 sudo dnf install -y $SYSTEM_PACKAGES
 
 # Set default shell for user

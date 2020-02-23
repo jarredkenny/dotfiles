@@ -1,32 +1,43 @@
 #!/bin/bash
 
-##
-# ALL SYSTEMS
-##
+HOST=`hostname`
 
 # Set wallpaper
 feh --bg-fill ~/Pictures/Wallpaper/wallpaper.jpg
 
-
 # Merge .Xresources
-xrdb -merge~/.Xresources
+xrdb -merge ~/.Xresources
 
-
+##
 # Laptop
+##
+if [ "$HOST" == "lilith" ]; then
+	# Configure Trackpad
+	synclient \
+		HorizEdgeScroll=1 \
+		HorizScrollDelta=-100 \
+		VertEdgeScroll=1 \
+		VertScrollDelta=-100 \
+		TapButton1=1 \
+		TapButton2=3 \
+		PalmDetect=1 \
+		VertTwoFingerScroll=1 \
+		HorizTwoFingerScroll=1
+fi
 
-# Configure Trackpad
-synclient \
-	HorizEdgeScroll=1 \
-	HorizScrollDelta=-100 \
-	VertEdgeScroll=1 \
-	VertScrollDelta=-100 \
-	TapButton1=1 \
-	TapButton2=3 \
-	PalmDetect=1 \
-	VertTwoFingerScroll=1 \
-	HorizTwoFingerScroll=1
+##
+# Work System
+##
+if [ "$HOST" == "bang" ]; then
+	# Configure Displas
+	xrandr \
+		--output DP-1 --mode 1920x1080 --pos 0x0 --rotate left \
+		--output DP-2 --primary --mode 1920x1080 --pos 1080x357 --rotate normal
+fi
 
-# Configure Displays
-xrandr \
-  --output DP-1 --mode 1920x1080 --pos 0x0 --rotate left \
-  --output DP-2 --primary --mode 1920x1080 --pos 1080x357 --rotate normal \
+##
+# Home Desktop
+##
+if [ "$HOST" == "crunch" ]; then
+
+fi

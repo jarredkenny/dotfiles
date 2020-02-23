@@ -44,9 +44,9 @@ urgent_light = #ffa99b
 urgent_dark = #af4942
 
 [bar/top]
-;dpi = 200
+dpi = 192
 width = 100%
-;height = 64
+height = 52
 offset-x = 0
 offset-y = 0
 radius = 0.0
@@ -74,7 +74,7 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=12;1"
 
 modules-left = workspaces title
-modules-right = spotify wlan eth openvpn battery date
+modules-right = wlan eth openvpn battery date
 
 tray-scale = 1.0
 tray-position = right

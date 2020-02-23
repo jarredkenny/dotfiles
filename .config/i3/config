@@ -35,6 +35,9 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# Lock
+bindsym $mod+l exec ~/.i3/lock.sh
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -font "Noto\ Sans\ Nerd\ Font 14" -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -42,11 +45,6 @@ bindsym $mod+d exec rofi -font "Noto\ Sans\ Nerd\ Font 14" -show run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
