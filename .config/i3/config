@@ -166,7 +166,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-gaps inner 16
+gaps inner 12
 gaps outer 0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -179,8 +179,8 @@ gaps outer 0
 for_window [class="^.*"] border pixel 0
 
 # Screen Brightness keys
-# bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-# bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Media Key bindings
 bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
