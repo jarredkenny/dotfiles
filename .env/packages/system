@@ -10,3 +10,7 @@ cmake
 bat
 ImageMagick
 maim
+i3-gaps
+rofi
+polybar
+xfce4-power-manager

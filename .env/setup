@@ -39,5 +39,6 @@ fi
 # Home Desktop
 ##
 if [ "$HOST" == "crunch" ]; then
-
+  echo "Home"
 fi
+
