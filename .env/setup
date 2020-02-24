@@ -28,7 +28,7 @@ fi
 ##
 # Work System
 ##
-if [ "$HOST" == "bang" ]; then
+if [ "$HOST" == "crunch" ]; then
 	# Configure Displas
 	xrandr \
 		--output DP-1 --mode 1920x1080 --pos 0x0 --rotate left \
@@ -38,7 +38,7 @@ fi
 ##
 # Home Desktop
 ##
-if [ "$HOST" == "crunch" ]; then
+if [ "$HOST" == "bang" ]; then
   echo "Home"
 fi
 
