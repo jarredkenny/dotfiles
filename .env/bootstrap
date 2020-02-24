@@ -2,7 +2,7 @@
 
 ENVDIR="$( cd "$( dirname "$0" )" && pwd )"
 COMPONENT=$1
-SCOPE=$ENVDIR/modules/$COMPONENT
+SCOPE=$ENVDIR/tools/$COMPONENT
 
 # Run bootstrap.sh from each component or from supplied component
 for bootstrapper in $(find $SCOPE -name bootstrap.sh); do

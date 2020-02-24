@@ -36,13 +36,14 @@ Plugin 'prettier/vim-prettier'
 Plugin 'zah/nim.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'chriskempson/base16-vim'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 filetype plugin indent on
 
 " Color Scheme
 set termguicolors
-colorscheme base16-default-dark
+colorscheme gruvbox
 
 " netrw
 let g:netrw_winsize = -28
@@ -71,7 +72,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_nim_checkers = ['nim']
 
 " Airline Theme
-let g:airline_theme='base16_tomorrow'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 
 " Prettier

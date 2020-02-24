@@ -25,16 +25,16 @@
 ;  // Lock Circle
 
 [colors]
-bg = #ff1d1f21
-fg = #f6f3e8
+bg = #f0282828
+fg = #ffebdbd2
 cur = #656565
 sel = #444444
 grey = #99968b
-blue = #8ac6f2
-red = #e5786d
-yellow = #cae682
+blue = #ff458588
+red = #ffcc241d
+yellow = #ffd79921
 ltgreen = #e7f6da
-green = #95e454
+green = #ff98971a
 dkgrey = #8f8f8f
 
 active = #444444
