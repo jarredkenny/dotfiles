@@ -74,8 +74,8 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=12;1"
 
 modules-left = workspaces title
-modules-center = spotify alsa
-modules-right = wlan eth openvpn battery date
+modules-center = alsa
+modules-right = spotify wlan eth openvpn battery date
 
 tray-scale = 1.0
 tray-position = right
@@ -318,9 +318,9 @@ menu-2-1-exec = menu-open-0
 
 [module/spotify]
 type = custom/script
-interval = 1
+interval = 5
 exec = ~/.i3/now-playing.sh
-format-underline = ${colors.red}
+format-underline = ${colors.yellow}
 
 [settings]
 screenchange-reload = true

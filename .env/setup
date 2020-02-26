@@ -2,9 +2,6 @@
 
 HOST=`hostname`
 
-# Set wallpaper
-feh --bg-fill ~/Pictures/Wallpaper/wallpaper.jpg
-
 # Merge .Xresources
 xrdb -merge ~/.Xresources
 
@@ -42,3 +39,5 @@ if [ "$HOST" == "bang" ]; then
   echo "Home"
 fi
 
+# Set wallpaper
+feh --bg-fill ~/Pictures/Wallpaper/wallpaper.jpg
