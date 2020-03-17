@@ -19,7 +19,8 @@ if [ "$HOST" == "lilith" ]; then
 		TapButton2=3 \
 		PalmDetect=1 \
 		VertTwoFingerScroll=1 \
-		HorizTwoFingerScroll=1
+		HorizTwoFingerScroll=1 \
+		PalmDetect=1
 fi
 
 ##
