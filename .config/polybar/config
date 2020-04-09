@@ -25,57 +25,58 @@
 ;  // Lock Circle
 
 [colors]
-bg = #f0282828
-fg = #ffebdbd2
-cur = #656565
-sel = #444444
+bg = #1d1f21
+fg = #c5c8c6
+cur = #282a2e
+sel = #373b41
 grey = #99968b
-blue = #ff458588
-red = #ffcc241d
-yellow = #ffd79921
-ltgreen = #e7f6da
-green = #ff98971a
+blue = #81a2be
+red = #cc6666
+yellow = #f0c674
+ltgreen = #b5bd68
+green = #b5bd68
 dkgrey = #8f8f8f
+orange = #de935f
+active = #cc6666
 
-active = #444444
-
-urgent = #e5786d
-urgent_light = #ffa99b
-urgent_dark = #af4942
+urgent = #de935f
+urgent_light = #f0c674
+urgent_dark = #cc6666
 
 [bar/top]
-;dpi = 192
+dpi = 163
 width = 100%
-;height = 52
+height = 42
 offset-x = 0
 offset-y = 0
 radius = 0.0
 fixed-center = true
+bottom = true
 
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-line-size = 2
-line-color = ${colors.grey}
+line-size = 0
+line-color = ${colors.blue}
 
 border-size = 0
-border-color = ${colors.bg}
+border-color = ${colors.blue}
 
 padding-left = 4
 padding-right = 4
 
-module-margin-left = 6
+module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Noto Sans Nerd Font:size=10;2"
-font-1 = "UbuntuMono Nerd Font:size=12;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=12;1"
+font-0 = "Noto Sans Nerd Font:size=8;2"
+font-1 = "Source Code Pro Nerd Font:size=8;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = workspaces title
-modules-center = 
-modules-right = alsa spotify wlan eth openvpn battery date
+modules-center =
+modules-right = pulseaudio spotify wlan eth openvpn battery date
 
 tray-scale = 1.0
 tray-position = right
@@ -110,6 +111,31 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.bg}
 label-indicator-underline = ${colors.red}
+
+[module/sound]
+type = custom/script
+exec = ~/.i3/pulseaudio-tail.sh
+tail = true
+click-right = exec pavucontrol &
+click-left = ~/polybar-scripts/pulseaudio-tail.sh --mute &
+scroll-up = ~/polybar-scripts/pulseaudio-tail.sh --up &
+scroll-down = ~/polybar-scripts/pulseaudio-tail.sh --down &
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+<Down>interval = 5
+format-volume = <ramp-volume> <label-volume>
+label-muted = 🔇 muted
+label-muted-foreground = #666
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+; Right and Middle click (unreleased)
+click-right = pavucontrol &
+; click-middle =
 
 [module/workspaces]
 type = internal/i3
@@ -208,34 +234,12 @@ date-alt = " %Y-%m-%d"
 time = "  %I:%M%P  "
 time-alt = %H:%M:%S
 
-format-underline = ${colors.grey}
+format-underline = ${colors.green}
+format = 🕓 <label>
+format-background = ${colors.blue}
+format-foreground = ${colors.bg}
 
 label = %date% %time%
-
-[module/alsa]
-type = internal/alsa
-format-volume = <ramp-volume> <bar-volume>
-format-muted-foreground = ${colors.fg}
-label-muted = muted
-format-muted-prefix = 
-format-muted-prefix-foreground = ${colors.fg}
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-foreground = ${colors.fg}
-
-display = eDP-1
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.fg}
-bar-volume-gradient = true
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.fg}
 
 [module/battery]
 type = internal/battery
@@ -320,7 +324,8 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 interval = 5
 exec = ~/.i3/now-playing.sh
-format-underline = ${colors.yellow}
+format-foreground = ${colors.bg}
+format-background = ${colors.red}
 
 [settings]
 screenchange-reload = true
