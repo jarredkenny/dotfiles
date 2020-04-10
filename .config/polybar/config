@@ -1,29 +1,3 @@
-; ICONS
-;  // Hash Icon
-;  // Slack Icon
-;  // FireFox Icon
-;  // Shell Icon
-;  // Terminal Icon
-;  // Heart Icon
-;  // WIFI Icon
-;  // Microchip Icon
-
-;  // Fedora Filled
-;  // Fedora Empty
-
-;  // Plugged In
-;  // Compass
-;  // Grid
-
-;  // Batter empty
-;  // Battery 25%
-;  // Battery 50%
-;  // Battery 75%
-;  // Battery full
-
-;  // Music Note
-;  // Lock Circle
-
 [colors]
 bg = #1d1f21
 fg = #c5c8c6
@@ -68,15 +42,15 @@ padding-right = 4
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Noto Sans Nerd Font:size=8;2"
-font-1 = "Source Code Pro Nerd Font:size=8;3"
+font-0 = "NotoSansDisplay Nerd Font:size=8;2"
+font-1 = "Hack Nerd Font:size=8;3"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = workspaces title
-modules-center =
-modules-right = pulseaudio spotify wlan eth openvpn battery date
+modules-center = 
+modules-right = cpu memory spotify temperature wlan battery sound currenttime
 
 tray-scale = 1.0
 tray-position = right
@@ -95,47 +69,6 @@ cursor-scroll = ns-resize
 [module/title]
 type = internal/xwindow
 label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.fg}
-format-prefix-underline = ${colors.red}
-
-label-layout = %layout%
-label-layout-underline = ${colors.red}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.bg}
-label-indicator-underline = ${colors.red}
-
-[module/sound]
-type = custom/script
-exec = ~/.i3/pulseaudio-tail.sh
-tail = true
-click-right = exec pavucontrol &
-click-left = ~/polybar-scripts/pulseaudio-tail.sh --mute &
-scroll-up = ~/polybar-scripts/pulseaudio-tail.sh --up &
-scroll-down = ~/polybar-scripts/pulseaudio-tail.sh --down &
-
-[module/pulseaudio]
-type = internal/pulseaudio
-sink = alsa_output.pci-0000_12_00.3.analog-stereo
-use-ui-max = true
-<Down>interval = 5
-format-volume = <ramp-volume> <label-volume>
-label-muted = 🔇 muted
-label-muted-foreground = #666
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
-
-; Right and Middle click (unreleased)
-click-right = pavucontrol &
-; click-middle =
 
 [module/workspaces]
 type = internal/i3
@@ -179,14 +112,6 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-6 = 7;
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = ""
-format-prefix-foreground = ${colors.fg}
-format-underline = ${colors.red}
-label = %percentage_used%%
-
 [module/wlan]
 type = internal/network
 interface = wlp2s0
@@ -206,40 +131,6 @@ format-disconnected =
 ;label-disconnected = disconnected
 ;format-disconnected-prefix = ""
 ;label-disconnected-foreground = ${colors.sel}
-
-
-[module/eth]
-type = internal/network
-interface = net0
-interval = 3.0
-
-format-connected-underline = ${colors.grey}
-format-connected-prefix = "⠀"
-format-connected-prefix-foreground = ${colors.fg}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.cur}
-
-[module/date]
-type = internal/date
-interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = "  %I:%M%P  "
-time-alt = %H:%M:%S
-
-format-underline = ${colors.green}
-format = 🕓 <label>
-format-background = ${colors.blue}
-format-foreground = ${colors.bg}
-
-label = %date% %time%
 
 [module/battery]
 type = internal/battery
@@ -272,60 +163,33 @@ animation-charging-4 =  
 animation-charging-foreground = ${colors.fg}
 animation-charging-framerate = 750
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = ${colors.blue}
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.red}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.sel}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.fg}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.sel}
-label-close =  cancel
-label-close-foreground = ${colors.sel}
-label-separator = |
-label-separator-foreground = ${colors.fg}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
 [module/spotify]
 type = custom/script
 interval = 5
 exec = ~/.i3/now-playing.sh
 format-foreground = ${colors.bg}
 format-background = ${colors.red}
+
+[module/sound]
+type = custom/script
+interval = 1
+exec = ~/.i3/sound.sh
+format-foreground = ${colors.bg}
+format-background = ${colors.orange}
+
+[module/currenttime]
+type = custom/script
+interval = 5
+exec = ~/.i3/clock.sh
+format-foreground = ${colors.bg}
+format-background = ${colors.blue}
+
+[module/mem]
+type = custom/script
+interval = 5
+exec = ~/.i3/mem.sh
+format-foreground = ${colors.bg}
+format-background = ${colors.orange}
 
 [settings]
 screenchange-reload = true

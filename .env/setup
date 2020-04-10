@@ -40,5 +40,6 @@ if [ "$HOST" == "bang" ]; then
   echo "Home"
 fi
 
+
 # Set wallpaper
 feh --bg-fill ~/Pictures/Wallpaper/wallpaper.jpg
