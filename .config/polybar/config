@@ -44,7 +44,7 @@ urgent_light = #f0c674
 urgent_dark = #cc6666
 
 [bar/top]
-dpi = 163
+dpi = 150
 width = 100%
 height = 42
 offset-x = 0
