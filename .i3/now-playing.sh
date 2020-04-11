@@ -1,4 +1,5 @@
 #!/bin/bash
+# 
 
 STATE=`/bin/bash -c "playerctl -p spotify status 2> /dev/null"`
 ARTIST=`/bin/bash -c "playerctl -p spotify metadata artist 2> /dev/null"`

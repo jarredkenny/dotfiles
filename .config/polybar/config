@@ -44,13 +44,13 @@ module-margin-right = 0
 
 font-0 = "NotoSansDisplay Nerd Font:size=8;2"
 font-1 = "Hack Nerd Font:size=8;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
+font-2 = "Source Code Pro Nerd Font:style=Regular:pixelsize=10;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = workspaces title
 modules-center = 
-modules-right = cpu memory spotify temperature wlan battery sound currenttime
+modules-right = cpu memory spotify temperature wlan battery docker sound currenttime
 
 tray-scale = 1.0
 tray-position = right
@@ -170,6 +170,15 @@ exec = ~/.i3/now-playing.sh
 format-foreground = ${colors.bg}
 format-background = ${colors.red}
 
+[module/docker]
+type = custom/script
+interval = 5
+exec = docker ps -q | wc -l 
+format-padding = 4
+label =  %output%
+format-foreground = ${colors.bg}
+format-background = ${colors.green}
+
 [module/sound]
 type = custom/script
 interval = 1
@@ -184,10 +193,21 @@ exec = ~/.i3/clock.sh
 format-foreground = ${colors.bg}
 format-background = ${colors.blue}
 
-[module/mem]
-type = custom/script
-interval = 5
-exec = ~/.i3/mem.sh
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+label =   %gb_used%
+format-padding = 4
+format-foreground = ${colors.bg}
+format-background = ${colors.blue}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label>
+label =  %percentage%%
+format-padding = 4
 format-foreground = ${colors.bg}
 format-background = ${colors.orange}
 
