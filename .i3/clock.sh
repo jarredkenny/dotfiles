@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TIME=$(date +%l:%m\ %p)
+TIME=$(date +%l:%M\ %p)
 ICON=
 
 echo "    $ICON $TIME    "

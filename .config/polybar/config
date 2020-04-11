@@ -1,21 +1,21 @@
 [colors]
-bg = #1d1f21
-fg = #c5c8c6
-cur = #282a2e
-sel = #373b41
-grey = #99968b
-blue = #81a2be
-red = #cc6666
-yellow = #f0c674
-ltgreen = #b5bd68
-green = #b5bd68
-dkgrey = #8f8f8f
-orange = #de935f
-active = #cc6666
+bg = #ff1d1f21
+fg = #ffc5c8c6
+cur = #ff282a2e
+sel = #ff373b41
+grey = #ff99968b
+blue = #ff81a2be
+red = #ffcc6666
+yellow = #fff0c674
+ltgreen = #ffb5bd68
+green = #ffb5bd68
+dkgrey = #ff8f8f8f
+orange = #ffde935f
+active = #ffcc6666
 
-urgent = #de935f
-urgent_light = #f0c674
-urgent_dark = #cc6666
+urgent = #ffde935f
+urgent_light = #fff0c674
+urgent_dark = #ffcc6666
 
 [bar/top]
 dpi = 150
@@ -25,7 +25,7 @@ offset-x = 0
 offset-y = 0
 radius = 0.0
 fixed-center = true
-bottom = true
+bottom = false
 
 background = ${colors.bg}
 foreground = ${colors.fg}
@@ -36,8 +36,8 @@ line-color = ${colors.blue}
 border-size = 0
 border-color = ${colors.blue}
 
-padding-left = 4
-padding-right = 4
+padding-left = 0
+padding-right = 0
 
 module-margin-left = 0
 module-margin-right = 0
@@ -48,9 +48,9 @@ font-2 = "Source Code Pro Nerd Font:style=Regular:pixelsize=10;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
 
-modules-left = workspaces title
+modules-left = workspaces
 modules-center = 
-modules-right = cpu memory spotify temperature wlan battery docker sound currenttime
+modules-right = spotify cpu memory temperature wlan battery docker sound currenttime
 
 tray-scale = 1.0
 tray-position = right
@@ -66,10 +66,6 @@ scroll-down = i3wm-wsprev
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/title]
-type = internal/xwindow
-label = %title:0:30:...%
-
 [module/workspaces]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -82,16 +78,16 @@ label-mode-foreground = ${colors.fg}
 label-mode-background = ${colors.bg}
 
 label-focused = "%icon%"
-label-focused-background = ${colors.active}
-label-focused-foreground = ${colors.fg}
+label-focused-background = ${colors.blue}
+label-focused-foreground = ${colors.cur}
 label-focused-underline = ${colors.grey}
 
 label-focused-padding = 4
 
 label-unfocused = "%icon%"
 label-unfocused-padding = 4
-label-unfocused-background = ${colors.bg}
-label-unfocused-foreground = ${colors.cur}
+label-unfocused-background = ${colors.grey}
+label-unfocused-foreground = ${colors.bg}
 
 label-urgent = "%icon%"
 label-urgent-background = ${colors.urgent_light}
@@ -188,7 +184,7 @@ format-background = ${colors.orange}
 
 [module/currenttime]
 type = custom/script
-interval = 5
+interval = 0.5
 exec = ~/.i3/clock.sh
 format-foreground = ${colors.bg}
 format-background = ${colors.blue}
