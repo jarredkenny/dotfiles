@@ -45,17 +45,17 @@ module-margin-right = 0
 font-0 = "NotoSansDisplay Nerd Font:size=8;2"
 font-1 = "Hack Nerd Font:size=8;3"
 font-2 = "Source Code Pro Nerd Font:style=Regular:pixelsize=10;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
+font-3 = "NotoSans Nerd Font"
 
 modules-left = workspaces
 modules-center = 
-modules-right = spotify cpu memory temperature wlan battery docker sound currenttime
+modules-right = spotify weather spacer docker cputemp cpu memory spacer sound wifi battery currenttime
 
 tray-scale = 1.0
 tray-position = right
-tray-padding = 12
-tray-maxsize = 12
+tray-padding = 4
+tray-maxsize = 18
+tray-background = ${colors.blue}
 
 wm-restack = i3
 override-redirect = false
@@ -164,7 +164,7 @@ type = custom/script
 interval = 5
 exec = ~/.i3/now-playing.sh
 format-foreground = ${colors.bg}
-format-background = ${colors.red}
+format-background = ${colors.orange}
 
 [module/docker]
 type = custom/script
@@ -177,17 +177,32 @@ format-background = ${colors.green}
 
 [module/sound]
 type = custom/script
-interval = 1
-exec = ~/.i3/sound.sh
+interval = 0.5
+label = %output%
+exec = pamixer --get-mute > /dev/null && echo  || echo " $(pamixer --get-volume)"
+click-left = pamixer -t
+scroll-up = pamixer -i 5
+scroll-down = pamixer -d 5
+format-padding = 4 
 format-foreground = ${colors.bg}
-format-background = ${colors.orange}
+format-background = ${colors.green}
 
 [module/currenttime]
 type = custom/script
 interval = 0.5
-exec = ~/.i3/clock.sh
+label =  %output%
+exec = date +%l:%M\ %p
+format-padding = 4
+format-foreground = ${colors.bg}
+format-background = ${colors.red}
+
+[module/weather]
+type = custom/script
+interval = 10.0
+exec = curl -s "wttr.in/charlottetown?format=1"
 format-foreground = ${colors.bg}
 format-background = ${colors.blue}
+format-padding = 4
 
 [module/memory]
 type = internal/memory
@@ -206,6 +221,22 @@ label =  %percentage%%
 format-padding = 4
 format-foreground = ${colors.bg}
 format-background = ${colors.orange}
+
+[module/cputemp]
+type = custom/script
+interval = 5
+label =  %output%
+exec = TEMP=$(cat /sys/devices/virtual/thermal/thermal_zone0/temp); expr $TEMP / 1000
+format-padding = 4
+format-foreground = ${colors.bg}
+format-background = ${colors.red}
+
+[module/spacer]
+type = custom/script
+interval = 1000
+exec = echo " "
+format-padding = 4
+
 
 [settings]
 screenchange-reload = true
