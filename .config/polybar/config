@@ -169,7 +169,7 @@ format-background = ${colors.orange}
 [module/docker]
 type = custom/script
 interval = 5
-exec = docker ps -q | wc -l 
+exec = (docker ps | tail -n +2 | grep "" > /dev/null) && (docker ps -q | wc -l) || echo '' 
 format-padding = 4
 label =  %output%
 format-foreground = ${colors.bg}

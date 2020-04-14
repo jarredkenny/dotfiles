@@ -22,4 +22,4 @@ if [ "$STATE" == "Paused" ]; then
   OUT="$ICON_PAUSED $TITLE - $ARTIST"
 fi
 
-echo "    $OUT    "
+echo $OUT
