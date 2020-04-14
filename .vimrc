@@ -43,7 +43,7 @@ filetype plugin indent on
 
 " Color Scheme
 set termguicolors
-colorscheme gruvbox
+colorscheme base16-tomorrow-night
 
 " netrw
 let g:netrw_winsize = -28
