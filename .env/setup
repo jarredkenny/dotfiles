@@ -42,4 +42,4 @@ fi
 
 
 # Set wallpaper
-feh --bg-fill ~/Pictures/Wallpaper/wallpaper.jpg
+feh --bg-tile ~/Pictures/Wallpaper/wallpaper.png

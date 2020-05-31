@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/.env/bin/spotifyd --no-daemon --config-path ~/.config/spotifyd/spotifyd.conf
