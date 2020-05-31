@@ -188,6 +188,13 @@ bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
 bindsym XF86AudioMute exec amixer sset Master toggle
 
+bindsym $mod+slash exec playerctl -p spotify play-pause
+bindsym $mod+period exec playerctl -p spotify next
+bindsym $mod+comma exec playerctl -p spotify previous
+
+bindsym $mod+apostrophe exec pamixer -i 2
+bindsym $mod+semicolon exec pamixer -d 2
+
 focus_follows_mouse no
 
 # Startup
