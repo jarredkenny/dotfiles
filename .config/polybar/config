@@ -1,24 +1,24 @@
 [colors]
-bg = #ff1d1f21
-fg = #ffc5c8c6
-cur = #ff282a2e
-sel = #ff373b41
-grey = #ff99968b
-blue = #ff81a2be
-red = #ffcc6666
-yellow = #fff0c674
-ltgreen = #ffb5bd68
-green = #ffb5bd68
-dkgrey = #ff8f8f8f
-orange = #ffde935f
-active = #ffcc6666
+bg = #ff2d2d2d
+fg = #ffcccccc
+cur = #ff474747
+sel = #ff606060
+grey = #ff808080
+blue = #ff6699cc
+red = #fff2777a
+yellow = #ffffcc66
+ltgreen = #ff99cc99
+green = #ff99cc99
+dkgrey = #ff2d2d2d
+orange = #fff99157
+active = #fff99157
 
 urgent = #ffde935f
 urgent_light = #fff0c674
 urgent_dark = #ffcc6666
 
 [bar/top]
-dpi = 186
+dpi = 132
 width = 100%
 height = 42
 offset-x = 0
@@ -49,7 +49,7 @@ font-3 = "NotoSans Nerd Font"
 
 modules-left = workspaces
 modules-center = 
-modules-right = spotify weather spacer docker cputemp cpu memory spacer sound wifi battery currenttime
+modules-right = spotify weather cputemp sound wifi battery currenttime
 
 tray-scale = 1.0
 tray-position = right
@@ -78,8 +78,8 @@ label-mode-foreground = ${colors.fg}
 label-mode-background = ${colors.bg}
 
 label-focused = "%icon%"
-label-focused-background = ${colors.blue}
-label-focused-foreground = ${colors.cur}
+label-focused-background = ${colors.sel}
+label-focused-foreground = ${colors.fg}
 label-focused-underline = ${colors.grey}
 
 label-focused-padding = 4
@@ -87,12 +87,12 @@ label-focused-padding = 4
 label-unfocused = "%icon%"
 label-unfocused-padding = 4
 label-unfocused-background = ${colors.grey}
-label-unfocused-foreground = ${colors.bg}
+label-unfocused-foreground = ${colors.cur}
 
 label-urgent = "%icon%"
-label-urgent-background = ${colors.urgent_light}
-label-urgent-foreground = ${colors.urgent}
-label-urgent-underline = ${colors.urgent_dark}
+label-urgent-background = ${colors.orange}
+label-urgent-foreground = ${colors.fg}
+label-urgent-underline = ${colors.red}
 label-urgent-padding = 4
 
 label-visible = "%icon%"
@@ -165,11 +165,12 @@ interval = 5
 exec = ~/.i3/now-playing.sh
 format-foreground = ${colors.bg}
 format-background = ${colors.orange}
+format-padding = 4
 
 [module/docker]
 type = custom/script
 interval = 5
-exec = (docker ps | tail -n +2 | grep "" > /dev/null) && (docker ps -q | wc -l) || echo '' 
+exec = (docker ps | tail -n +2 | grep "" > /dev/null) && (docker ps -q | wc -l) || echo ''
 format-padding = 4
 label =  %output%
 format-foreground = ${colors.bg}
@@ -183,9 +184,9 @@ exec = pamixer --get-mute > /dev/null && echo  || echo " $(pamixer --get-v
 click-left = pamixer -t
 scroll-up = pamixer -i 5
 scroll-down = pamixer -d 5
-format-padding = 4 
-format-foreground = ${colors.bg}
-format-background = ${colors.green}
+format-padding = 4
+format-foreground = ${colors.fg}
+format-background = ${colors.sel}
 
 [module/currenttime]
 type = custom/script
@@ -193,15 +194,15 @@ interval = 0.5
 label =  %output%
 exec = date +%l:%M\ %p
 format-padding = 4
-format-foreground = ${colors.bg}
-format-background = ${colors.red}
+format-foreground = ${colors.fg}
+format-background = ${colors.cur}
 
 [module/weather]
 type = custom/script
 interval = 10.0
 exec = curl -s "wttr.in/charlottetown?format=1"
-format-foreground = ${colors.bg}
-format-background = ${colors.blue}
+format-foreground = ${colors.cur}
+format-background = ${colors.yellow}
 format-padding = 4
 
 [module/memory]
@@ -210,8 +211,8 @@ interval = 3
 format = <label>
 label =   %gb_used%
 format-padding = 4
-format-foreground = ${colors.bg}
-format-background = ${colors.blue}
+format-foreground = ${colors.fg}
+format-background = ${colors.bg}
 
 [module/cpu]
 type = internal/cpu
@@ -219,8 +220,8 @@ interval = 2
 format = <label>
 label =  %percentage%%
 format-padding = 4
-format-foreground = ${colors.bg}
-format-background = ${colors.orange}
+format-foreground = ${colors.fg}
+format-background = ${colors.bg}
 
 [module/cputemp]
 type = custom/script
@@ -228,7 +229,7 @@ interval = 5
 label =  %output%
 exec = TEMP=$(cat /sys/devices/virtual/thermal/thermal_zone0/temp); expr $TEMP / 1000
 format-padding = 4
-format-foreground = ${colors.bg}
+format-foreground = ${colors.cur}
 format-background = ${colors.red}
 
 [module/spacer]
