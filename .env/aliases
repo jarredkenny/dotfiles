@@ -15,8 +15,8 @@ alias fucking='sudo'
 alias gl='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
 
 # Git aliases
-alias cln='git clone' 
-alias co='git checkout' 
+alias cln='git clone'
+alias co='git checkout'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gs='git status'
