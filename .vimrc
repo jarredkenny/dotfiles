@@ -7,7 +7,7 @@ set ignorecase
 set smartcase
 set incsearch
 set autowrite
-" set hidden
+set hidden
 set number relativenumber
 set updatetime=250
 
@@ -31,12 +31,10 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ayu-theme/ayu-vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'zah/nim.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'chriskempson/base16-vim'
-Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,25 +43,17 @@ filetype plugin indent on
 set termguicolors
 colorscheme base16-tomorrow-night
 
-" netrw
-let g:netrw_winsize = -28
-let g:netrw_liststyle = 3 " Tree View
-let g:netrw_browse_split = 3 " Open file in new tab
-
 " Tcomment
 noremap <silent> <Leader>/ :TComment<CR>
 
 " CtrlP
 noremap <silent> <Leader>p :CtrlP<CR>
 
-" Lightline
-" set laststatus=2
-" set noshowmode
-
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_mode_map={'mode': 'passive'}
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -72,7 +62,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_nim_checkers = ['nim']
 
 " Airline Theme
-let g:airline_theme='gruvbox'
+let g:airline_theme='base16_tomorrow'
 let g:airline_powerline_fonts = 1
 
 " Prettier
