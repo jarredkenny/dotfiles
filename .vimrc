@@ -48,6 +48,9 @@ noremap <silent> <Leader>/ :TComment<CR>
 
 " CtrlP
 noremap <silent> <Leader>p :CtrlP<CR>
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -77,4 +80,6 @@ au BufNewFile,BufRead,BufReadPost *.nim set syntax=nim filetype=nim
 
 " Force syntax highlighting for puppet files
 au BufNewFile,BufRead,BufReadPost *.pp set syntax=puppet filetype=puppet
-au BufNewFile,BufRead,BufReadPost Puppetfile set syntax=puppet filetype=puppet
+au BufNewFile,BufRead,BufReadPost Puppetfile set syntax=puppet filetype=puppeti
+
+nnoremap <Leader>b :ls<CR>:b<Space>

@@ -167,7 +167,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-gaps inner 28
+gaps inner 42
 gaps outer 0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -179,7 +179,7 @@ gaps outer 0
 # Disable window borders
 #
 for_window [class="^.*"] border pixel 0
-border_radius 9
+border_radius 12
 
 # Screen Brightness keys
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
