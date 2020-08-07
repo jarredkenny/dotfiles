@@ -13,4 +13,6 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 export LAUNCH4J_HOME="/home/jarred/Apps/launch4j/"
 export JAVA_HOME=/usr/lib/jvm/java
 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 export PATH="/usr/lib/jvm/java/bin:$PATH"

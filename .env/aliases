@@ -37,3 +37,4 @@ alias nano='vim'
 alias subl='vim'
 
 alias cat='bat'
+alias ls='exa'

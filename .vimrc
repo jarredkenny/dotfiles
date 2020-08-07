@@ -1,5 +1,3 @@
-" My Vim Configuration
-"
 set showmode
 set showcmd
 set showmatch
@@ -10,21 +8,19 @@ set autowrite
 set hidden
 set number relativenumber
 set updatetime=250
+set mouse=a
 
 set nocompatible
 filetype off
 syntax on
 
-" Leader Key
 let mapleader = ','
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/plugins')
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugins
 Plugin 'tomtom/tcomment_vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-syntastic/syntastic'
@@ -35,6 +31,8 @@ Plugin 'prettier/vim-prettier'
 Plugin 'zah/nim.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'chriskempson/base16-vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -43,14 +41,15 @@ filetype plugin indent on
 set termguicolors
 colorscheme base16-tomorrow-night
 
+" Fzf
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
+nnoremap <silent> <Leader>f :Find<CR>
+nnoremap <silent> <Leader>p :GFiles<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+
 " Tcomment
 noremap <silent> <Leader>/ :TComment<CR>
-
-" CtrlP
-noremap <silent> <Leader>p :CtrlP<CR>
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -75,11 +74,10 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " Consider node_modules to be in PATH
 let $PATH = system('yarn bin')[:-2] . ':' . $PATH
 
-" Force .nim files to filestype=nim and syntax=nim
+" Nim
 au BufNewFile,BufRead,BufReadPost *.nim set syntax=nim filetype=nim
 
-" Force syntax highlighting for puppet files
+" Puppet
 au BufNewFile,BufRead,BufReadPost *.pp set syntax=puppet filetype=puppet
 au BufNewFile,BufRead,BufReadPost Puppetfile set syntax=puppet filetype=puppeti
 
-nnoremap <Leader>b :ls<CR>:b<Space>
