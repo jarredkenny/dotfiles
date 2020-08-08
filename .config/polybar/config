@@ -1,5 +1,5 @@
 [colors]
-bg = #ff2d2d2d
+bg = #ff272128
 fg = #ffcccccc
 cur = #ff474747
 sel = #ff606060
@@ -18,9 +18,9 @@ urgent_light = #fff0c674
 urgent_dark = #ffcc6666
 
 [bar/top]
-dpi = 122
+dpi = 132
 width = 100%
-height = 42
+height = 48
 offset-x = 0
 offset-y = 0
 radius = 0.0
@@ -42,9 +42,9 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "NotoSansDisplay Nerd Font:size=8;2"
+font-0 = "NotoSansDisplay Nerd Font:size=8;1"
 font-1 = "Hack Nerd Font:size=8;3"
-font-2 = "Source Code Pro Nerd Font:style=Regular:pixelsize=10;1"
+font-2 = "Source Code Pro Nerd Font:style=Regular:pixelsize=10;3"
 font-3 = "NotoSans Nerd Font"
 
 modules-left = workspaces
@@ -55,7 +55,6 @@ tray-scale = 1.0
 tray-position = right
 tray-padding = 4
 tray-maxsize = 18
-tray-background = ${colors.blue}
 
 wm-restack = i3
 override-redirect = false
@@ -163,8 +162,6 @@ animation-charging-framerate = 750
 type = custom/script
 interval = 5
 exec = ~/.i3/now-playing.sh
-format-foreground = ${colors.bg}
-format-background = ${colors.orange}
 format-padding = 4
 
 [module/docker]
@@ -173,8 +170,6 @@ interval = 5
 exec = (docker ps | tail -n +2 | grep "" > /dev/null) && (docker ps -q | wc -l) || echo ''
 format-padding = 4
 label =  %output%
-format-foreground = ${colors.bg}
-format-background = ${colors.green}
 
 [module/sound]
 type = custom/script
@@ -185,8 +180,6 @@ click-left = pamixer -t
 scroll-up = pamixer -i 5
 scroll-down = pamixer -d 5
 format-padding = 4
-format-foreground = ${colors.fg}
-format-background = ${colors.sel}
 
 [module/currenttime]
 type = custom/script
@@ -194,15 +187,11 @@ interval = 0.5
 label =  %output%
 exec = date +%l:%M\ %p
 format-padding = 4
-format-foreground = ${colors.fg}
-format-background = ${colors.cur}
 
 [module/weather]
 type = custom/script
 interval = 10.0
 exec = curl -s "wttr.in/charlottetown?format=1"
-format-foreground = ${colors.cur}
-format-background = ${colors.yellow}
 format-padding = 4
 
 [module/memory]
@@ -211,8 +200,6 @@ interval = 3
 format = <label>
 label =   %gb_used%
 format-padding = 4
-format-foreground = ${colors.fg}
-format-background = ${colors.bg}
 
 [module/cpu]
 type = internal/cpu
@@ -220,8 +207,6 @@ interval = 2
 format = <label>
 label =  %percentage%%
 format-padding = 4
-format-foreground = ${colors.fg}
-format-background = ${colors.bg}
 
 [module/cputemp]
 type = custom/script
@@ -229,8 +214,6 @@ interval = 5
 label =  %output%
 exec = TEMP=$(cat /sys/devices/virtual/thermal/thermal_zone0/temp); expr $TEMP / 1000
 format-padding = 4
-format-foreground = ${colors.cur}
-format-background = ${colors.red}
 
 [module/spacer]
 type = custom/script
