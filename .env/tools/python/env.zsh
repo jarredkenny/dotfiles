@@ -1,4 +1,4 @@
-export PATH=$HOME/.tools/miniconda/bin:$PATH
+export PATH=$HOME/.tools/miniconda/bin:$HOME/.local/bin:$PATH
 
 __conda_setup="$(CONDA_REPORT_ERRORS=false '$HOME/.tools/miniconda/bin/conda' shell.bash hook 2> /dev/null)"
 if [ $? -eq 0 ]; then

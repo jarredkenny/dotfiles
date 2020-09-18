@@ -10,8 +10,6 @@ alias ca='config add'
 alias e='nvim'
 alias vim='nvim'
 alias lsd="ls -ltrh"
-alias fuck='sudo $(fc -ln -1)'
-alias fucking='sudo'
 alias gl='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
 
 # Git aliases
@@ -31,10 +29,6 @@ alias grhh='git reset --hard HEAD'
 alias dc='docker-compose'
 alias dvp='docker volume prune'
 alias dsp='docker system prune'
-
-# Force myself to learn vim
-alias nano='vim'
-alias subl='vim'
 
 alias cat='bat'
 alias ls='exa'

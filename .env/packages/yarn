@@ -3,5 +3,3 @@ eslint-cli
 prettier
 serve
 lerna
-@vue/cli
-@vue/cli-init
