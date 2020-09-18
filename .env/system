@@ -2,25 +2,9 @@
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-# Enable RPMFusion
-sudo dnf install \
-  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install \
-  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-# Copr Repos
-sudo dnf copr enable gregw/i3desktop
-sudo sudo dnf copr enable pschyska/alacritty
-
 # Install packages from packages-system
 SYSTEM_PACKAGES=$(cat $DIR/packages/system | sed 's/\\n/ /')
 sudo dnf install -y $SYSTEM_PACKAGES
 
 # Set default shell for user
 sudo usermod --shell /usr/bin/zsh $USER
-
-sudo dnf install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-sudo dnf install -y https://downloads.slack-edge.com/linux_releases/slack-4.3.2-0.1.fc21.x86_64.rpm
-sudo dnf install -y https://az764295.vo.msecnd.net/stable/c47d83b293181d9be64f27ff093689e8e7aed054/code-1.42.1-1581433057.el7.x86_64.rpm
-
-~/.nerd-fonts/install.sh
