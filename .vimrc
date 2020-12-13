@@ -9,8 +9,9 @@ set hidden
 set number relativenumber
 set updatetime=250
 set mouse=a
-set cmdheight=2
+set cmdheight=4
 set ttimeoutlen=0
+set nofoldenable
 
 set nocompatible
 filetype off
@@ -40,13 +41,15 @@ Plugin 'liuchengxu/vista.vim'
 Plugin 'tyru/open-browser.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'alaviss/nim.nvim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 filetype plugin indent on
 
 " Color Scheme
 set termguicolors
-colorscheme base16-tomorrow-night
+colorscheme base16-default-dark
 
 " Fzf
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
@@ -65,7 +68,7 @@ noremap <silent> <Leader>] :Vista!!<CR>
 noremap <silent> <Leader>/ :TComment<CR>
 
 " ALE
-let g:ale_completion_enabled = 1 
+let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \   'nim': ['nimlsp', 'nimcheck'],
 \}
@@ -97,7 +100,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_nim_checkers = ['nim']
 
 " Airline Theme
-let g:airline_theme='base16_tomorrow'
+let g:airline_theme='ayu_mirage'
 let g:airline_powerline_fonts = 1
 
 " Prettier
@@ -115,4 +118,3 @@ au BufNewFile,BufRead,BufReadPost *.pp set syntax=puppet filetype=puppet
 au BufNewFile,BufRead,BufReadPost Puppetfile set syntax=puppet filetype=puppeti
 
 let javascript_sql_dialect='sql'
-
