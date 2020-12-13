@@ -24,6 +24,7 @@ alias gp='git push'
 alias gpl='git pull'
 alias grh='git reset HEAD'
 alias grhh='git reset --hard HEAD'
+alias gcfd='git clean -fd'
 
 # Docker
 alias dc='docker-compose'

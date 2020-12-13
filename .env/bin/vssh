@@ -2,4 +2,5 @@
 
 DOM=$1
 IP=`virsh domifaddr $DOM | grep vnet | awk '{print $4}' | sed 's/\/24//'`
+echo "> Connecting to $DOM ($IP)"
 ssh root@$IP

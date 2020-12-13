@@ -1,3 +1,13 @@
+gcc
+flex
+make
+bison
+openssl-devel
+elfutils-libelf-devel
 exa
 playerctl
 neovim
+alacritty
+ripgrep
+fzf
+tmux

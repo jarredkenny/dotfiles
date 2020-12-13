@@ -10,3 +10,5 @@ BINARY=$(find $DIR | grep choosenim | head -n 1)
 $BINARY --choosenimDir:$HOME/.tools/choosenim --nimbleDir:$HOME/.tools/nimble stable -y
 mkdir -p $HOME/.tools/bin
 mv $BINARY $HOME/.tools/bin/choosenim
+
+$HOME/.tools/nimble/bin/nimble install nimlsp

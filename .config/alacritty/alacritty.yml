@@ -19,8 +19,8 @@ window:
   # Specified in number of columns/lines, not pixels. If both are zero this
   # setting is ignored.
   dimensions:
-    columns: 85
-    lines: 25
+    columns: 140
+    lines: 40
 
   # Window padding (changes require restart)
   #
@@ -68,26 +68,26 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    # family: Iosevka
-    family: "FiraCode Nerd Font Mono"
+    family: Iosevka
+    # family: "FiraCode Nerd Font Mono"
     # family: "Source Code Pro"
     # style: Retina
 
   # The bold font face
   bold:
-    # family: Iosevka
-    family: "FiraCode Nerd Font Mono"
+    family: Iosevka
+    #family: "FiraCode Nerd Font Mono"
     # family: "Source Code Pro"
 
   # The italic font face
   italic:
-    # family: Iosevka
-    family: "FiraCode Nerd Font Mono"
+    family: Iosevka
+    # family: "FiraCode Nerd Font Mono"
     # family: "Source Code Pro"
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 9
+  size: 11
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -168,7 +168,7 @@ colors:
     - { index: 20, color: '0xb4b7b4' }
     - { index: 21, color: '0xe0e0e0' }
 # Background opacity
-background_opacity: 1.0
+background_opacity: 1.00
 
 # Key bindings
 #

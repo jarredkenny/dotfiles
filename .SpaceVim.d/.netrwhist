@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/jarred/Code/screen-manager-client'
-let g:netrw_dirhist_2='/home/jarred/Code/screen-manager-client/src'
-let g:netrw_dirhist_3='/home/jarred/Code/screen-manager-client/src/api'
-let g:netrw_dirhist_4='/home/jarred/Code/screen-manager-client/src'
-let g:netrw_dirhist_5='/home/jarred/Code/screen-manager-client/src/pages'
-let g:netrw_dirhist_6='/home/jarred/Code/device-kernel'
-let g:netrw_dirhist_7='/home/jarred/Code/.personal/stemble-backend/frontend'
