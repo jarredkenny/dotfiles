@@ -20,6 +20,6 @@ export PATH="/usr/lib/jvm/java/bin:$PATH"
 
 if [ -z "$TMUX" ]
 then
-   tmux attach -t TMUX || tmux new -s TMUX
+	(tmux attach -t TMUX || tmux new -s TMUX) && exit 0
 fi
 
