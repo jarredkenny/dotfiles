@@ -9,7 +9,7 @@ set hidden
 set number relativenumber
 set updatetime=250
 set mouse=a
-set cmdheight=4
+set cmdheight=2
 set ttimeoutlen=0
 set nofoldenable
 
@@ -43,6 +43,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'alaviss/nim.nvim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'jxnblk/vim-mdx-js'
 
 call vundle#end()
 filetype plugin indent on
@@ -90,7 +91,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_nim_checkers = ['nim']
 
 " Airline Theme
-let g:airline_theme='ayu_mirage'
+let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1
 
 " Prettier
@@ -108,3 +109,12 @@ au BufNewFile,BufRead,BufReadPost *.pp set syntax=puppet filetype=puppet
 au BufNewFile,BufRead,BufReadPost Puppetfile set syntax=puppet filetype=puppeti
 
 let javascript_sql_dialect='sql'
+
+nnoremap <C-S-Down> :m .+1<CR>==
+nnoremap <C-S-Up> :m .-2<CR>==
+inoremap <C-S-Down> <Esc>:m .+1<CR>==gi
+inoremap <C-S-Up> <Esc>:m .-2<CR>==gi
+vnoremap <C-S-Down> :m '>+1<CR>gv=gv
+vnoremap <C-S-Up> :m '<-2<CR>gv=gv
+
+noremap gd :ALEGoToDefinition<CR>
