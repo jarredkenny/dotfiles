@@ -10,8 +10,9 @@ set number relativenumber
 set updatetime=250
 set mouse=a
 set cmdheight=2
-set ttimeoutlen=0
 set nofoldenable
+set timeoutlen=1000 ttimeoutlen=0
+
 
 set nocompatible
 filetype off
@@ -44,6 +45,7 @@ Plugin 'alaviss/nim.nvim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'jxnblk/vim-mdx-js'
+Plugin 'josuegaleas/jay'
 
 call vundle#end()
 filetype plugin indent on
@@ -91,7 +93,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_nim_checkers = ['nim']
 
 " Airline Theme
-let g:airline_theme='jellybeans'
+let g:airline_theme='jay'
 let g:airline_powerline_fonts = 1
 
 " Prettier
@@ -118,3 +120,5 @@ vnoremap <C-S-Down> :m '>+1<CR>gv=gv
 vnoremap <C-S-Up> :m '<-2<CR>gv=gv
 
 noremap gd :ALEGoToDefinition<CR>
+
+

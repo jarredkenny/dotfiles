@@ -53,6 +53,9 @@ window:
   #   - SimpleFullscreen
   startup_mode: Windowed
 
+
+  dynamic_title: true
+
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
   # disable scrolling.
