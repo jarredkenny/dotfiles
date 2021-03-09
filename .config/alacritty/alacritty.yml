@@ -71,7 +71,7 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: "FuraMono Nerd Font"
+    family: "FiraCode Nerd Font Mono"
     # family: Iosevka
     # family: "FiraCode Nerd Font Mono"
     # family: "Source Code Pro"
@@ -79,14 +79,14 @@ font:
 
   # The bold font face
   bold:
-    family: "FuraMono Nerd Font"
+    family: "Menlo"
     # family: Iosevka
     #family: "FiraCode Nerd Font Mono"
     # family: "Source Code Pro"
 
   # The italic font face
   italic:
-    family: "FuraMono Nerd Font"
+    family: "Menlo"
     # family: Iosevka
     # family: "FiraCode Nerd Font Mono"
     # family: "Source Code Pro"
@@ -416,7 +416,7 @@ live_config_reload: true
 # You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
 # Entries in shell.args are passed unmodified as arguments to the shell.
 shell:
-  program: /usr/bin/zsh
+  program: /usr/local/bin/zsh
   # args:
   #   - --command=tmux
 
