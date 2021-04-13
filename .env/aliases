@@ -25,6 +25,7 @@ alias gpl='git pull'
 alias grh='git reset HEAD'
 alias grhh='git reset --hard HEAD'
 alias gcfd='git clean -fd'
+alias gbs='git branch | grep -v $(git branch --show-current) | grep -ve "master" | xargs git branch -D'
 
 # Docker
 alias dc='docker-compose'
