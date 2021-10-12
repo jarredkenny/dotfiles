@@ -25,4 +25,3 @@ then
   (tmux attach -t TMUX || tmux new -s TMUX) && exit 0
 fi
 
-eval "$(jenv init -)"
