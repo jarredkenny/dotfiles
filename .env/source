@@ -13,6 +13,8 @@ git config --global user.name "Jarred Kenny"
 git config --global pull.rebase true
 git config --global fetch.prune true
 git config --global diff.colorMoved zebra
+git config --global core.ignorecase false
+git config --global core.editor 'code --wait'
 
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
