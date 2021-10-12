@@ -20,7 +20,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 export PATH="/usr/lib/jvm/java/bin:$PATH"
 
-if [ -z "$TMUX" ]
+if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]
 then
   (tmux attach -t TMUX || tmux new -s TMUX) && exit 0
 fi
