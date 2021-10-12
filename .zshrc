@@ -1,6 +1,8 @@
+export PATH="/usr/local/bin:$HOME/.jenv/bin:$PATH"
 export ZSH=$HOME/.tools/oh-my-zsh
 export DEFAULT_USER=$USER
 export ZSH_THEME="agnoster"
+export ZSH_DISABLE_COMPFIX=true
 
 plugins=(
   git
@@ -20,6 +22,7 @@ export PATH="/usr/lib/jvm/java/bin:$PATH"
 
 if [ -z "$TMUX" ]
 then
-	(tmux attach -t TMUX || tmux new -s TMUX) && exit 0
+  (tmux attach -t TMUX || tmux new -s TMUX) && exit 0
 fi
 
+eval "$(jenv init -)"

@@ -25,11 +25,14 @@ alias gpl='git pull'
 alias grh='git reset HEAD'
 alias grhh='git reset --hard HEAD'
 alias gcfd='git clean -fd'
+alias gbs='git branch | grep -v $(git branch --show-current) | grep -ve "master" | xargs git branch -D'
 
 # Docker
 alias dc='docker-compose'
 alias dvp='docker volume prune'
 alias dsp='docker system prune'
+alias dsa='docker stop $(docker ps -aq)'
+alias dra='docker rm $(docker ps -aq)'
 
 alias cat='bat'
 alias ls='exa'
