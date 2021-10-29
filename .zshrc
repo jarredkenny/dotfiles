@@ -6,6 +6,7 @@ export ZSH_DISABLE_COMPFIX=true
 
 plugins=(
   git
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh

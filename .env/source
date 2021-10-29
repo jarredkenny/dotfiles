@@ -8,7 +8,7 @@ source $ENVDIR/aliases
 config config status.showUntrackedFiles no
 
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-git config --global user.email "jarred.kenny@libertymutual.com"
+git config --global user.email "jarred.kenny@tracktile.io"
 git config --global user.name "Jarred Kenny"
 git config --global pull.rebase true
 git config --global fetch.prune true
