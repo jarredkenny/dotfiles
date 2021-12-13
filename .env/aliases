@@ -25,11 +25,15 @@ alias gpl='git pull'
 alias grh='git reset HEAD'
 alias grhh='git reset --hard HEAD'
 alias gcfd='git clean -fd'
+alias lg='lazygit'
+
 
 # Docker
-alias dc='docker-compose'
+alias dc='docker compose'
 alias dvp='docker volume prune'
 alias dsp='docker system prune'
+
+alias awslocal="AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-east-2 aws --endpoint-url=http://localhost:4566"
 
 alias cat='bat'
 alias ls='exa'

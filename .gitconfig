@@ -1,0 +1,16 @@
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+  editor = code --wait
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	tool = code --wait $MERGED
+[user]
+	email = jarred.kenny@libertymutual.com
+	name = Jarred Kenny
+[pull]
+	ff = only

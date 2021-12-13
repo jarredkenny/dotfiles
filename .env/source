@@ -3,17 +3,14 @@
 ENVDIR="$( cd "$( dirname "$0" )" && pwd )"
 
 export PATH="$HOME/.env/bin:$HOME/.tools/bin:$PATH"
+export AWS_PAGER=""
 
 source $ENVDIR/aliases
 config config status.showUntrackedFiles no
 
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-git config --global user.email "jarred.kenny@libertymutual.com"
-git config --global user.name "Jarred Kenny"
-
 export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
+#export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+#gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
 
 # Source env.zsh from each component or from supplied component
 for envfile in $(find $ENVDIR/tools -name env.zsh); do
