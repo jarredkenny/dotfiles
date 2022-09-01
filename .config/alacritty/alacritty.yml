@@ -29,6 +29,9 @@ font:
   size: 12
 
 
+window:
+  opacity: 1.00
+
 # Base16 Default Dark 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
 colors:
