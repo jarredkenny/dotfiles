@@ -1,18 +1,12 @@
-# Aliases for managing dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias bootstrap='$HOME/.env/bootstrap'
-
 alias cpl='config pull'
 alias cph='config push'
 alias ca='config add'
-
-# Additional Aliases
 alias e='nvim'
 alias vim='nvim'
 alias lsd="ls -ltrh"
 alias gl='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
-
-# Git aliases
 alias cln='git clone'
 alias co='git checkout'
 alias gd='git diff'
@@ -26,15 +20,11 @@ alias grh='git reset HEAD'
 alias grhh='git reset --hard HEAD'
 alias gcfd='git clean -fd'
 alias lg='lazygit'
-
-
-# Docker
 alias dc='docker compose'
 alias dvp='docker volume prune'
 alias dsp='docker system prune'
-
 alias awslocal="AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-east-2 aws --endpoint-url=http://localhost:4566"
-
 alias cat='bat'
 alias ls='exa'
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
+alias at="alacritty-themes"
