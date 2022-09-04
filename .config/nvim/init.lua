@@ -1,13 +1,12 @@
 require("plugins")
 require("opts")
 require("vars")
-require("keys")
 
 require("nvim-tree").setup({})
 
 require("lualine").setup({
 	options = {
-		theme = "ayu",
+		theme = "tokyonight",
 	},
 })
 require("nvim-autopairs").setup({})
@@ -52,3 +51,7 @@ require("neotest").setup({
 })
 
 require("alpha").setup(require("alpha.themes.startify").config)
+
+require("keys")
+
+require("scrollbar").setup()

@@ -36,6 +36,7 @@ require("packer").startup(function(use)
 	use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 	use("RRethy/nvim-base16")
 	use("karb94/neoscroll.nvim")
+	use("petertriho/nvim-scrollbar")
 	use("j-hui/fidget.nvim")
 	use({
 		"lewis6991/hover.nvim",
