@@ -260,6 +260,11 @@ _G.packer_plugins = {
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["stabilize.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/stabilize.nvim",
+    url = "https://github.com/luukvbaal/stabilize.nvim"
+  },
   tagbar = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/tagbar",
@@ -289,6 +294,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
   },
   ["vgit.nvim"] = {
     loaded = true,

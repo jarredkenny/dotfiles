@@ -29,6 +29,8 @@ require("toggleterm").setup({
 })
 
 require("leap").set_default_keymaps()
+require("stabilize").setup()
+require("trouble").setup()
 
 require("nvim-treesitter.configs").setup({
 	autotag = {
