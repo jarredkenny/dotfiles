@@ -16,3 +16,5 @@ map("i", "<C-S-Up>", "<Esc>:m .-2<CR>==gi", {})
 map("i", "<C-S-Down>", "<Esc>:m .+1<CR>==gi", {})
 map("v", "<C-S-Up>", ":m >+1<CR>gv==gv", {})
 map("v", "<C-S-Down>", ":m <-2<CR>gv==gv", {})
+
+map("v", "<leader>y", '"+y', {})

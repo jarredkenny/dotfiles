@@ -38,7 +38,7 @@ source $HOME/.env/source
 
 if [ -z "$TMUX" ]
 then
-    tmux attach -t main || tmux new -s main
+    tmux attach -t J || tmux new -s J
 fi
 
 # Fig post block. Keep at the bottom of this file.

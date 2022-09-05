@@ -17,6 +17,8 @@ require("lualine").setup({
 require("nvim-autopairs").setup({})
 require("todo-comments").setup({})
 
+require("tmux").setup({})
+
 require("lsp")
 require("vgit").setup()
 require("fidget").setup({})
@@ -25,6 +27,8 @@ require("neoscroll").setup()
 require("toggleterm").setup({
 	terminal_mappings = true,
 })
+
+require("leap").set_default_keymaps()
 
 require("nvim-treesitter.configs").setup({
 	autotag = {
