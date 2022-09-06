@@ -5,13 +5,27 @@ require("vars")
 require("auto-session").setup({})
 require("nvim-tree").setup({})
 require("nvim-autopairs").setup({})
-require("bufferline").setup({})
+require("bufferline").setup({
+	options = {
+		separator_style = "slant",
+		always_show_bufferline = true,
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "Files",
+				text_align = "left",
+				separator = true,
+			},
+		},
+	},
+})
 require("lsp_signature").setup({})
 require("nvim-surround").setup({})
 
 require("lualine").setup({
 	options = {
 		theme = "tokyonight",
+		globalstatus = true,
 	},
 })
 require("nvim-autopairs").setup({})

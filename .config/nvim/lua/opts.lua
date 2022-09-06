@@ -18,7 +18,10 @@ opt.fileencoding = "utf8" -- str:  File encoding to use
 -- [[ Theme ]]
 opt.syntax = "ON" -- str:  Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
-vim.g.ayocolor = "dark"
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_cursor = "blue"
+vim.g.tokyonight_enable_italic = 1
+vim.g.tokyonight_transparent_background = 1
 vim.cmd([[colorscheme tokyonight]])
 
 -- [[ Search ]]
