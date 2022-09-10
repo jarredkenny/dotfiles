@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 export PATH="/usr/local/bin:$PATH"
 export ZSH=$HOME/.tools/oh-my-zsh
 export DEFAULT_USER=$USER
@@ -36,10 +34,9 @@ export DYLD_LIBRARY_PATH="/opt/homebrew/CEllaR"
 
 source $HOME/.env/source
 
+export EDITOR="nvim"
+
 if [ -z "$TMUX" ]
 then
-    tmux attach -t J || tmux new -s J
+    tmuxinator start J
 fi
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

@@ -21,6 +21,8 @@ require("bufferline").setup({
 })
 require("lsp_signature").setup({})
 require("nvim-surround").setup({})
+require("nvim-tundra").setup({})
+require("better_escape").setup({})
 
 require("lualine").setup({
 	options = {

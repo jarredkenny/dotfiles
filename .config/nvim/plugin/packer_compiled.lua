@@ -94,15 +94,20 @@ _G.packer_plugins = {
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/auto-session",
     url = "https://github.com/rmagatti/auto-session"
   },
-  ["ayu-vim"] = {
-    loaded = true,
-    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/ayu-vim",
-    url = "https://github.com/ayu-theme/ayu-vim"
-  },
   ["beacon.nvim"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/beacon.nvim",
     url = "https://github.com/DanilaMihailov/beacon.nvim"
+  },
+  ["better-escape.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/better-escape.nvim",
+    url = "https://github.com/max397574/better-escape.nvim"
+  },
+  ["bufdelete.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
+    url = "https://github.com/famiu/bufdelete.nvim"
   },
   ["bufferline.nvim"] = {
     loaded = true,
@@ -240,6 +245,11 @@ _G.packer_plugins = {
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
   ["nvim-ts-autotag"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
@@ -249,6 +259,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
     url = "https://github.com/p00f/nvim-ts-rainbow"
+  },
+  ["nvim-tundra"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-tundra",
+    url = "https://github.com/sam4llis/nvim-tundra"
   },
   ["nvim-web-devicons"] = {
     loaded = true,

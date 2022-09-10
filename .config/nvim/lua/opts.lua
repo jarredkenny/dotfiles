@@ -22,7 +22,7 @@ vim.g.tokyonight_style = "night"
 vim.g.tokyonight_cursor = "blue"
 vim.g.tokyonight_enable_italic = 1
 vim.g.tokyonight_transparent_background = 1
-vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme tundra]])
 
 -- [[ Search ]]
 opt.ignorecase = true -- bool: Ignore case in search patterns

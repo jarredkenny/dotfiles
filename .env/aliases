@@ -29,3 +29,4 @@ alias ls='exa'
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 alias at="alacritty-themes"
 alias ci="glab ci view"
+alias wttr="curl https://wttr.in/"
