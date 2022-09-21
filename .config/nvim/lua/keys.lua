@@ -1,0 +1,25 @@
+local map = vim.api.nvim_set_keymap
+
+vim.g.mapleader = ","
+
+map("n", "<leader>n", [[:NvimTreeToggle<CR>]], {})
+map("n", "<leader>t", [[:TroubleToggle<CR>]], {})
+map("v", "<leader>/", [[:CommentToggle<CR>]], {})
+map("n", "<leader>/", [[:CommentToggle<CR>]], {})
+map("n", "<leader>ff", [[:Telescope find_files<CR>]], {})
+map("n", "<leader>fb", [[:Telescope buffers<CR>]], {})
+map("n", "<leader>fg", [[:Telescope live_grep<CR>]], {})
+map("n", "<C-S-Up>", "<Esc>:m ,-2<CR>==gi", {})
+map("n", "<C-S-Down>", "<Esc>:m .+1<CR>==gi", {})
+map("i", "<C-S-Up>", "<Esc>:m .-2<CR>==gi", {})
+map("i", "<C-S-Down>", "<Esc>:m .+1<CR>==gi", {})
+map("v", "<C-S-Up>", ":m >+1<CR>gv==gv", {})
+map("v", "<C-S-Down>", ":m <-2<CR>gv==gv", {})
+map("v", "<leader>y", '"+y', {})
+map("n", "<leader>w", ":bd<CR>", {})
+map("n", "<leader>v", ":vsplit<CR>", {})
+map("n", "<leader>h", ":split<CR>", {})
+map("n", "<C-S-Left>", ":wincmd h<CR>", {})
+map("n", "<C-S-Right>", ":wincmd l<CR>", {})
+map("n", "<C-S-Up>", ":wincmd k<CR>", {})
+map("n", "<C-S-Down>", ":wincmd j<CR>", {})
