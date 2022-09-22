@@ -6,6 +6,7 @@ export ZSH_DISABLE_COMPFIX=true
 
 plugins=(
   git
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -36,7 +37,7 @@ source $HOME/.env/source
 
 export EDITOR="nvim"
 
-if [ -z "$TMUX" ]
+if [ -z "$TMUX" ] 
 then
     tmuxinator start J
 fi

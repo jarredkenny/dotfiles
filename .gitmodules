@@ -4,9 +4,6 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule ".nerd-fonts"]
-	path = .nerd-fonts
-	url = git@github.com:ryanoasis/nerd-fonts.git
 [submodule ".tmux-themepack"]
 	path = .tmux-themepack
 	url = https://github.com/jimeh/tmux-themepack.git
