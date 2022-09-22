@@ -1,8 +1,10 @@
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	editor = nvim
+	editor = code --wait
+	ignorecase = false
 [diff]
 	tool = vscode
+	colorMoved = zebra
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
@@ -10,7 +12,10 @@
 [mergetool "vscode"]
 	tool = code --wait $MERGED
 [user]
-	email = jarred.kenny@libertymutual.com
+	email = jarred.kenny@tracktile.io
 	name = Jarred Kenny
 [pull]
 	ff = only
+	rebase = true
+[fetch]
+	prune = true
