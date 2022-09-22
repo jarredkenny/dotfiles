@@ -19,7 +19,7 @@ export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export ANDROID_AVD_HOME=~/.android/avd
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-export PATH="/usr/lib/jvm/java/bin:/Users/jarred/Library/Android/sdk/platform-tools:/Users/jarred/Library/Python/3.8/bin:/opt/homebrew/bin:/usr/local/homebrew/bin:/$PATH"
+export PATH="/usr/lib/jvm/java/bin:/Users/jarred/Library/Android/sdk/platform-tools:/Users/jarred/Library/Python/3.8/bin:/opt/homebrew/bin:/usr/local/homebrew/bin:/home/jarred/bin:/$PATH"
 
 # bun completions
 [ -s "/Users/jarred/.bun/_bun" ] && source "/Users/jarred/.bun/_bun"
