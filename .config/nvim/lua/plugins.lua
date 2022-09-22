@@ -8,6 +8,8 @@ end
 
 require("packer").startup(function(use)
 	use("aserowy/tmux.nvim")
+	use("rebelot/kanagawa.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("sam4llis/nvim-tundra")
 	use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
 	use("windwp/nvim-autopairs")
@@ -49,6 +51,7 @@ require("packer").startup(function(use)
 	use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 	use("RRethy/nvim-base16")
 	use("karb94/neoscroll.nvim")
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("petertriho/nvim-scrollbar")
 	use("j-hui/fidget.nvim")
 	use({
@@ -93,6 +96,20 @@ require("packer").startup(function(use)
 					enable_default_keybindings = true,
 				},
 			})
+		end,
+	})
+
+	use({
+		"anuvyklack/windows.nvim",
+		requires = {
+			"anuvyklack/middleclass",
+			"anuvyklack/animation.nvim",
+		},
+		config = function()
+			vim.o.winwidth = 320
+			vim.o.winminwidth = 320
+			vim.o.equalalways = false
+			require("windows").setup()
 		end,
 	})
 

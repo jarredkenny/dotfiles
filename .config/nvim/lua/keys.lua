@@ -2,6 +2,7 @@ local map = vim.api.nvim_set_keymap
 
 vim.g.mapleader = ","
 
+map("n", "<leader>g", [[:DiffviewToggle<CR>]], {})
 map("n", "<leader>n", [[:NvimTreeToggle<CR>]], {})
 map("n", "<leader>t", [[:TroubleToggle<CR>]], {})
 map("v", "<leader>/", [[:CommentToggle<CR>]], {})
@@ -17,6 +18,7 @@ map("v", "<C-S-Up>", ":m >+1<CR>gv==gv", {})
 map("v", "<C-S-Down>", ":m <-2<CR>gv==gv", {})
 map("v", "<leader>y", '"+y', {})
 map("n", "<leader>w", ":bd<CR>", {})
+map("n", "<leader>W", ":%bd<CR>", {})
 map("n", "<leader>v", ":vsplit<CR>", {})
 map("n", "<leader>h", ":split<CR>", {})
 map("n", "<C-S-Left>", ":wincmd h<CR>", {})

@@ -2,6 +2,7 @@ require("plugins")
 require("opts")
 require("vars")
 
+require("catppuccin").setup()
 require("auto-session").setup({})
 require("nvim-tree").setup({})
 require("nvim-autopairs").setup({})
@@ -19,6 +20,17 @@ require("bufferline").setup({
 		},
 	},
 })
+
+require("telescope").setup({
+	pickers = {
+		find_files = {
+
+			hidden = true,
+			file_ignore_patterns = { "^.git/", "^node_modules/" },
+		},
+	},
+})
+
 require("lsp_signature").setup({})
 require("nvim-surround").setup({})
 require("nvim-tundra").setup({})
@@ -26,7 +38,7 @@ require("better_escape").setup({})
 
 require("lualine").setup({
 	options = {
-		theme = "tokyonight",
+		theme = "kanagawa",
 		globalstatus = true,
 	},
 })
@@ -93,3 +105,13 @@ require("alpha").setup(require("alpha.themes.startify").config)
 require("keys")
 
 require("scrollbar").setup()
+
+vim.api.nvim_create_user_command("DiffviewToggle", function(e)
+	local view = require("diffview.lib").get_current_view()
+
+	if view then
+		vim.cmd("DiffviewClose")
+	else
+		vim.cmd("DiffviewOpen " .. e.args)
+	end
+end, { nargs = "*" })
