@@ -7,7 +7,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
-	use("aserowy/tmux.nvim")
 	use("rebelot/kanagawa.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("sam4llis/nvim-tundra")
@@ -43,7 +42,6 @@ require("packer").startup(function(use)
 	use("majutsushi/tagbar")
 	use("tpope/vim-fugitive")
 	use("junegunn/gv.vim")
-	use("windwp/nvim-autopairs")
 	use("RRethy/vim-illuminate")
 	use("folke/todo-comments.nvim")
 	use("DanilaMihailov/beacon.nvim")
@@ -106,9 +104,6 @@ require("packer").startup(function(use)
 			"anuvyklack/animation.nvim",
 		},
 		config = function()
-			vim.o.winwidth = 320
-			vim.o.winminwidth = 320
-			vim.o.equalalways = false
 			require("windows").setup()
 		end,
 	})

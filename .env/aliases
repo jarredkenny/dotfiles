@@ -29,7 +29,7 @@ alias lg='lazygit'
 alias dc='docker compose'
 alias dvp='docker volume prune'
 alias dsp='docker system prune'
-alias awslocal="AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-east-2 aws --endpoint-url=http://localhost:4566"
+alias awslocal='aws --endpoint-url=http://localhost:4566'
 alias cat='bat'
 alias ls='exa'
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"

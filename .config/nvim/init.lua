@@ -52,9 +52,6 @@ require("vgit").setup()
 require("fidget").setup({})
 require("nvim_comment").setup()
 require("neoscroll").setup()
-require("toggleterm").setup({
-	terminal_mappings = true,
-})
 
 require("leap").set_default_keymaps()
 require("stabilize").setup()
