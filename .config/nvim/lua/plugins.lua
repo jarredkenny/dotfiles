@@ -120,6 +120,8 @@ require("packer").startup(function(use)
 		},
 	})
 
+    use("xiyaowong/nvim-transparent")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

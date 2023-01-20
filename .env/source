@@ -4,7 +4,7 @@ ENVDIR="$( cd "$( dirname "$0" )" && pwd )"
 
 git config --global core.editor "nvim"
 
-export PATH="$HOME/.env/bin:$HOME/.tools/bin:$PATH"
+export PATH="$HOME/.env/bin:$PATH"
 export AWS_PAGER=""
 
 source $ENVDIR/aliases
@@ -22,6 +22,6 @@ git config --global core.editor 'code --wait'
 export GPG_TTY="$(tty)"
 
 # Source env.zsh from each component or from supplied component
-for envfile in $(find $ENVDIR/tools -name env.zsh); do
+for envfile in $(find $ENVDIR/components -name env.zsh); do
   source $envfile
 done

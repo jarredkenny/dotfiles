@@ -2,7 +2,22 @@
 
 ENVDIR="$( cd "$( dirname "$0" )" && pwd )"
 COMPONENT=$1
-SCOPE=$ENVDIR/tools/$COMPONENT
+SCOPE=$ENVDIR/components/$COMPONENT
+
+# If running everything, or 'system' component specifically, run it first.
+if [ "$COMPONENT" = "system" ] || [ -z "${COMPONENT}" ] ; then
+    # Detect the platform (similar to $OSTYPE)
+    OS="`uname`"
+    case $OS in
+        'Linux') bash $ENVDIR/system/linux.sh;;
+        'Darwin') bash $ENVDIR/system/macos.sh ;;
+        *) echo "Unknown system type: $OS";;
+    esac
+    if [ "$COMPONENT" = "system" ] ; then
+        exit  0
+    fi
+
+fi
 
 # Run bootstrap.sh from each component or from supplied component
 for bootstrapper in $(find $SCOPE -name bootstrap.sh); do

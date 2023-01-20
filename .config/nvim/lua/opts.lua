@@ -18,7 +18,7 @@ vim.g.tokyonight_cursor = "blue"
 vim.g.tokyonight_enable_italic = 1
 vim.g.tokyonight_transparent_background = 0
 vim.g.catppuccin_flavour = "mocha"
-vim.cmd([[colorscheme kanagawa]])
+vim.cmd([[colorscheme base16-tomorrow-night]])
 
 vim.cmd([[cnoreabbrev W w]])
 
