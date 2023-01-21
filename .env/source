@@ -21,6 +21,13 @@ git config --global core.editor 'code --wait'
 
 export GPG_TTY="$(tty)"
 
+OS="`uname`"
+case $OS in
+    'Linux') source $ENVDIR/system/linux.env;;
+    'Darwin') source $ENVDIR/system/macos.env;;
+    *) echo "Unknown system type: $OS";;
+esac
+
 # Source env.zsh from each component or from supplied component
 for envfile in $(find $ENVDIR/components -name env.zsh); do
   source $envfile

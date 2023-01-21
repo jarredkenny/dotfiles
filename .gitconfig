@@ -19,3 +19,7 @@
 	rebase = true
 [fetch]
 	prune = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[url "ssh://git@ggitlab.com/"]
+	insteadOf = https://gitlab.com/
