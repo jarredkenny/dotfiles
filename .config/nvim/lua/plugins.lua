@@ -1,9 +1,9 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap =
+    packer_bootstrap =
 		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-	vim.cmd([[packadd packer.nvim]])
+    vim.cmd([[packadd packer.nvim]])
 end
 
 require("packer").startup(function(use)
@@ -29,11 +29,14 @@ require("packer").startup(function(use)
 	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
 	use("neovim/nvim-lspconfig")
 	use("ggandor/leap.nvim")
-	use("hrsh7th/nvim-cmp")
 	use("windwp/nvim-ts-autotag")
 	use("ray-x/lsp_signature.nvim")
 	use("hrsh7th/cmp-nvim-lsp")
-	use("folke/trouble.nvim")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/nvim-cmp")
+    use("folke/trouble.nvim")
 	use("luukvbaal/stabilize.nvim")
 	use("saadparwaiz1/cmp_luasnip")
 	use("L3MON4D3/LuaSnip")
@@ -121,6 +124,7 @@ require("packer").startup(function(use)
 	})
 
     use("xiyaowong/nvim-transparent")
+    use("fedepujol/move.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
