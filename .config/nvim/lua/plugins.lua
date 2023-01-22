@@ -125,6 +125,7 @@ require("packer").startup(function(use)
 
     use("xiyaowong/nvim-transparent")
     use("fedepujol/move.nvim")
+    use("github/copilot.vim")
 
 	if packer_bootstrap then
 		require("packer").sync()
