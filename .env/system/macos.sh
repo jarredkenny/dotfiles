@@ -8,7 +8,8 @@ BREW_PACKAGES=(
     tmux
     fzf
     zoxide
-) 
+    tig
+)
 
 brew () {
     which brew > /dev/null ||  /bin/bash -c "$(curl -fsSL https://raiw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
