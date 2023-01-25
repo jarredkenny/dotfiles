@@ -1,15 +1,16 @@
 local map = vim.api.nvim_set_keymap
 
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 map("n", "<leader>g", [[:DiffviewToggle<CR>]], {})
 map("n", "<leader>n", [[:NvimTreeToggle<CR>]], {})
 map("n", "<leader>t", [[:TroubleToggle<CR>]], {})
 map("n", "<leader>/", [[:CommentToggle<CR>]], {})
 map("v", "<leader>/", [[:CommentToggle<CR>]], {})
-map("n", "<leader>ff", [[:Telescope find_files<CR>]], {})
-map("n", "<leader>fb", [[:Telescope buffers<CR>]], {})
-map("n", "<leader>fg", [[:Telescope live_grep<CR>]], {})
+map("n", "<leader>f", [[:Telescope find_files<CR>]], {})
+map("n", "<leader>b", [[:Telescope buffers<CR>]], {})
+map("n", "<leader>g", [[:Telescope live_grep<CR>]], {})
+map("n", "<leader>cs", [[:Telescope colorscheme<CR>]], {})
 map("i", "<C-c>", "<C-O>:stopinsert<CR>", {})
 map('n', '<C-S-Up>', ':MoveLine(-1)<CR>', {})
 map('n', '<C-S-Down>', ':MoveLine(1)<CR>', {})

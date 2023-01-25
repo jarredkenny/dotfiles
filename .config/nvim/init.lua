@@ -48,6 +48,9 @@ require("bufferline").setup({
 
 require("telescope").setup({
 	pickers = {
+    colorscheme = {
+      enable_preview = true
+    },
 		find_files = {
 			hidden = true,
 			file_ignore_patterns = { "^.git/", "^node_modules/" },
