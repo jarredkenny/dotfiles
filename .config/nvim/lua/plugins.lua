@@ -1,5 +1,6 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap =
 		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
@@ -7,16 +8,20 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
-	use("rebelot/kanagawa.nvim")
+  
+  -- Color Schemes
+  use("rebelot/kanagawa.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("sam4llis/nvim-tundra")
-	use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
-	use("windwp/nvim-autopairs")
-	use("famiu/bufdelete.nvim")
+  use("folke/tokyonight.nvim")
+	
+  -- UI & Behaviour
+  use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
+  use("famiu/bufdelete.nvim")
+  use("windwp/nvim-autopairs")
 	use("max397574/better-escape.nvim")
 	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 	use({ "nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim" })
-	use("folke/tokyonight.nvim")
 	use("kylechui/nvim-surround")
 	use("goolord/alpha-nvim")
 	use("nvim-treesitter/nvim-treesitter")
@@ -27,23 +32,34 @@ require("packer").startup(function(use)
 	use("editorconfig/editorconfig-vim")
 	use("terrortylor/nvim-comment")
 	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
-	use("neovim/nvim-lspconfig")
-	use("ggandor/leap.nvim")
+  use("folke/trouble.nvim")
+  use("sbdchd/neoformat")
+  use("majutsushi/tagbar")
+  use("tpope/vim-fugitive")
+  use("gbprod/yanky.nvim")
+
+
+  -- LSP
+  use({
+    'ray-x/navigator.lua',
+    requires = {
+        { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+        { 'neovim/nvim-lspconfig' },
+    },
+  })
 	use("windwp/nvim-ts-autotag")
 	use("ray-x/lsp_signature.nvim")
-	use("hrsh7th/cmp-nvim-lsp")
+
+  -- Auto Completion
+  use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
-    use("folke/trouble.nvim")
 	use("luukvbaal/stabilize.nvim")
 	use("saadparwaiz1/cmp_luasnip")
 	use("L3MON4D3/LuaSnip")
 	use("mfussenegger/nvim-lint")
-	use("sbdchd/neoformat")
-	use("majutsushi/tagbar")
-	use("tpope/vim-fugitive")
 	use("junegunn/gv.vim")
 	use("RRethy/vim-illuminate")
 	use("folke/todo-comments.nvim")
@@ -123,7 +139,6 @@ require("packer").startup(function(use)
 		},
 	})
 
-    use("xiyaowong/nvim-transparent")
     use("fedepujol/move.nvim")
     use("github/copilot.vim")
 

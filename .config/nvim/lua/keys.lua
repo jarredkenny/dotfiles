@@ -2,8 +2,9 @@ local map = vim.api.nvim_set_keymap
 
 vim.g.mapleader = " "
 
-map("n", "<leader>g", [[:DiffviewToggle<CR>]], {})
+map("n", "<leader>G", [[:DiffviewToggle<CR>]], {})
 map("n", "<leader>n", [[:NvimTreeToggle<CR>]], {})
+map("n", "<leader>N", "[[:NvimTreeFocus<CR>]]", {});
 map("n", "<leader>t", [[:TroubleToggle<CR>]], {})
 map("n", "<leader>/", [[:CommentToggle<CR>]], {})
 map("v", "<leader>/", [[:CommentToggle<CR>]], {})
@@ -22,9 +23,8 @@ map('v', '<C-S-Left>', ':MoveHBlock(-1)<CR>', {})
 map('v', '<C-S-Right>', ':MoveHBlock(1)<CR>', {})
 map("i", "<C-S-Up>", "<Esc>:m .-2<CR>==gi", {})
 map("i", "<C-S-Down>", "<Esc>:m .+1<CR>==gi", {})
-map("v", "<leader>y", '"+y', {})
-map("n", "<leader>w", ":bd<CR>", {})
-map("n", "<leader>W", ":%bd<CR>", {})
+map("n", "<leader>w", ":Bdelete<CR>", {})
+map("n", "<leader>W", ":Bwipeout<CR>", {})
 map("n", "<leader>v", ":vsplit<CR>", {})
 map("n", "<leader>h", ":split<CR>", {})
 -- map("n", "<C-d>", "<C-d>zz", {})
@@ -33,3 +33,4 @@ map("n", "<leader>h", ":split<CR>", {})
 -- map("n", "<C-S-Right>", ":wincmd l<CR>", {})
 -- map("n", "<C-S-Up>", ":wincmd k<CR>", {})
 -- map("n", "<C-S-Down>", ":wincmd j<CR>", {})
+-- map("v", "<leader>y", '"+y', {})
