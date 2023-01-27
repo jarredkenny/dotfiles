@@ -125,7 +125,7 @@ require("neotest").setup({
 
 require("keys")
 
-require("scrollbar").setup()
+-- require("scrollbar").setup()
 
 vim.api.nvim_create_user_command("DiffviewToggle", function(e)
 	local view = require("diffview.lib").get_current_view()
@@ -184,6 +184,12 @@ local cmp = require'cmp'
       { name = 'cmdline' }
     })
   })
+
+  -- Set up lspconfig.
+  -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- require('lspconfig')['tsserver'].setup {
+  --   capabilities = capabilities
+  -- }
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on(
