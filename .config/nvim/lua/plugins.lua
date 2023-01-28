@@ -8,7 +8,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
-  
+  use("stevearc/profile.nvim")
+
+
   -- Color Schemes
   use("rebelot/kanagawa.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
@@ -30,13 +32,12 @@ require("packer").startup(function(use)
 	use("rmagatti/auto-session")
 	use("p00f/nvim-ts-rainbow")
 	use("editorconfig/editorconfig-vim")
-	use("terrortylor/nvim-comment")
-	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
   use("folke/trouble.nvim")
   use("sbdchd/neoformat")
   use("majutsushi/tagbar")
   use("tpope/vim-fugitive")
   use("gbprod/yanky.nvim")
+  use("xiyaowong/nvim-transparent")
 
 
   -- LSP
@@ -53,7 +54,7 @@ require("packer").startup(function(use)
   -- Auto Completion
   use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
+    use("hrsh6th/cmp-path")
     use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
 	use("luukvbaal/stabilize.nvim")
@@ -63,6 +64,7 @@ require("packer").startup(function(use)
 	use("junegunn/gv.vim")
 	use("RRethy/vim-illuminate")
 	use("folke/todo-comments.nvim")
+  use("numToStr/Comment.nvim")
 	use("DanilaMihailov/beacon.nvim")
 	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 	use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
@@ -94,37 +96,11 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"aserowy/tmux.nvim",
-		config = function()
-			require("tmux").setup({
-				-- overwrite default configuration
-				-- here, e.g. to enable default bindings
-				copy_sync = {
-					-- enables copy sync and overwrites all register actions to
-					-- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
-					enable = true,
-				},
-				navigation = {
-					-- enables default keybindings (C-hjkl) for normal mode
-					enable_default_keybindings = true,
-				},
-				resize = {
-					-- enables default keybindings (A-hjkl) for normal mode
-					enable_default_keybindings = true,
-				},
-			})
-		end,
-	})
-
-	use({
 		"anuvyklack/windows.nvim",
 		requires = {
 			"anuvyklack/middleclass",
 			"anuvyklack/animation.nvim",
-		},
-		config = function()
-			require("windows").setup()
-		end,
+		}
 	})
 
 	use({

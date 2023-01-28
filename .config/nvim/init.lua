@@ -1,3 +1,29 @@
+local should_profile = os.getenv("NVIM_PROFILE")
+if should_profile then
+  require("profile").instrument_autocmds()
+  if should_profile:lower():match("^start") then
+    require("profile").start("*")
+  else
+    require("profile").instrument("*")
+  end
+end
+
+local function toggle_profile()
+  local prof = require("profile")
+  if prof.is_recording() then
+    prof.stop()
+    vim.ui.input({ prompt = "Save profile to:", completion = "file", default = "profile.json" }, function(filename)
+      if filename then
+        prof.export(filename)
+        vim.notify(string.format("Wrote %s", filename))
+      end
+    end)
+  else
+    prof.start("*")
+  end
+end
+vim.keymap.set("", "<f1>", toggle_profile)
+
 require("plugins")
 require("opts")
 require("vars")
@@ -52,14 +78,25 @@ require('kanagawa').setup({
     theme = "default"           -- Load "default" theme or the experimental "light" theme
 })
 
+require("transparent").setup({
+  enable = true, -- boolean: enable transparent
+  extra_groups = { -- table/string: additional groups that should be cleared
+    -- In particular, when you set it to 'all', that means all available groups
+
+    -- example of akinsho/nvim-bufferline.lua
+    "BufferLineTabClose",
+    "BufferlineBufferSelected",
+    "BufferLineFill",
+    "BufferLineBackground",
+    "BufferLineSeparator",
+    "BufferLineIndicatorSelected",
+  },
+  exclude = {}, -- table: groups you don't want to clear
+})
+
 require("better_escape").setup({})
-
-
-
 require("lsp_signature").setup({})
 require("nvim-surround").setup({})
-
-
 require("yanky").setup({})
 
 require("lualine").setup({
@@ -68,8 +105,11 @@ require("lualine").setup({
 		globalstatus = true,
 	},
 })
-require("nvim_comment").setup()
+
+
 require("todo-comments").setup({})
+
+
 
 require('navigator').setup({
   lsp = {
@@ -77,7 +117,6 @@ require('navigator').setup({
   }
 })
 
-require("vgit").setup()
 require("fidget").setup({})
 require("neoscroll").setup()
 require("trouble").setup()
@@ -126,6 +165,7 @@ require("neotest").setup({
 require("keys")
 
 require("scrollbar").setup()
+require("windows").setup()
 
 vim.api.nvim_create_user_command("DiffviewToggle", function(e)
 	local view = require("diffview.lib").get_current_view()

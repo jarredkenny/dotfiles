@@ -14,6 +14,7 @@ BREW_PACKAGES=(
     zoxide
     tig
     pyenv
+    lazygit
     font-3270-nerd-font
     font-fira-mono-nerd-font
     font-inconsolata-go-nerd-font

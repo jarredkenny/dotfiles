@@ -11,6 +11,8 @@ opt.encoding = "utf8"
 opt.fileencoding = "utf8"
 
 
+
+
 opt.syntax = "ON"
 opt.termguicolors = true
 opt.background = "dark"
@@ -30,7 +32,10 @@ opt.incsearch = true
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.softtabstop = 2
-opt.tabstop = 2
 opt.splitright = true
 opt.splitbelow = true
 opt.clipboard = "unnamedplus"
+opt.tabstop = 2
+
+
+opt.cmdheight = t

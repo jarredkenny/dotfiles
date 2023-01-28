@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   ["FixCursorHold.nvim"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
@@ -265,11 +270,6 @@ _G.packer_plugins = {
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-comment"] = {
-    loaded = true,
-    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-comment",
-    url = "https://github.com/terrortylor/nvim-comment"
-  },
   ["nvim-lint"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-lint",
@@ -289,6 +289,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
+  },
+  ["nvim-transparent"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-transparent",
+    url = "https://github.com/xiyaowong/nvim-transparent"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -330,6 +335,11 @@ _G.packer_plugins = {
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["profile.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/profile.nvim",
+    url = "https://github.com/stevearc/profile.nvim"
+  },
   ["stabilize.nvim"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/stabilize.nvim",
@@ -344,12 +354,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["tmux.nvim"] = {
-    config = { "\27LJ\2\n¶\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vresize\1\0\1\31enable_default_keybindings\2\15navigation\1\0\1\31enable_default_keybindings\2\14copy_sync\1\0\0\1\0\1\venable\2\nsetup\ttmux\frequire\0" },
-    loaded = true,
-    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/tmux.nvim",
-    url = "https://github.com/aserowy/tmux.nvim"
   },
   ["todo-comments.nvim"] = {
     loaded = true,
@@ -371,11 +375,6 @@ _G.packer_plugins = {
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
-  ["vgit.nvim"] = {
-    loaded = true,
-    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/vgit.nvim",
-    url = "https://github.com/tanvirtin/vgit.nvim"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -387,26 +386,22 @@ _G.packer_plugins = {
     url = "https://github.com/RRethy/vim-illuminate"
   },
   ["windows.nvim"] = {
-    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fwindows\frequire\0" },
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/windows.nvim",
     url = "https://github.com/anuvyklack/windows.nvim"
+  },
+  ["yanky.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/yanky.nvim",
+    url = "https://github.com/gbprod/yanky.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: tmux.nvim
-time([[Config for tmux.nvim]], true)
-try_loadstring("\27LJ\2\n¶\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vresize\1\0\1\31enable_default_keybindings\2\15navigation\1\0\1\31enable_default_keybindings\2\14copy_sync\1\0\0\1\0\1\venable\2\nsetup\ttmux\frequire\0", "config", "tmux.nvim")
-time([[Config for tmux.nvim]], false)
 -- Config for: hover.nvim
 time([[Config for hover.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24hover.providers.lsp\frequire‘\2\1\0\a\0\17\0!6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\f\0006\4\0\0'\6\1\0B\4\2\0029\4\1\0045\5\r\0B\0\5\0016\0\b\0009\0\t\0009\0\n\0'\2\v\0'\3\14\0006\4\0\0'\6\1\0B\4\2\0029\4\15\0045\5\16\0B\0\5\1K\0\1\0\1\0\1\tdesc\24hover.nvim (select)\17hover_select\agK\1\0\1\tdesc\15hover.nvim\6K\6n\bset\vkeymap\bvim\17preview_opts\1\0\0\tinit\1\0\1\ntitle\2\0\nsetup\nhover\frequire\0", "config", "hover.nvim")
 time([[Config for hover.nvim]], false)
--- Config for: windows.nvim
-time([[Config for windows.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fwindows\frequire\0", "config", "windows.nvim")
-time([[Config for windows.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
