@@ -74,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["Comment.nvim"] = {
-    loaded = true,
-    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/Comment.nvim",
-    url = "https://github.com/numToStr/Comment.nvim"
-  },
   ["FixCursorHold.nvim"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
@@ -173,6 +168,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
+  },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["guihua.lua"] = {
     loaded = true,
@@ -270,6 +270,11 @@ _G.packer_plugins = {
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
+  },
   ["nvim-lint"] = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-lint",
@@ -314,6 +319,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/Users/jarred/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-ts-rainbow"] = {
     loaded = true,
