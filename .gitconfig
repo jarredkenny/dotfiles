@@ -1,14 +1,14 @@
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	editor = code --wait
+	editor = nvim
 	ignorecase = false
 [diff]
-	tool = vscode
+	tool = Kaleidoscope
 	colorMoved = zebra
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-	tool = vscode
+	tool = Kaleidoscope
 [mergetool "vscode"]
 	tool = code --wait $MERGED
 [user]
@@ -23,3 +23,17 @@
 	insteadOf = https://github.com/
 [url "ssh://git@ggitlab.com/"]
 	insteadOf = https://gitlab.com/
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+	trustExitCode = true
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false

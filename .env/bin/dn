@@ -1,6 +1,0 @@
-#!/bin/bash
-
-NOTE_DIR=$HOME/Documents/Jarred/journals
-NOTE_NAME=`date +%Y_%m_%d.md`
-
-nvim $NOTE_DIR/$NOTE_NAME

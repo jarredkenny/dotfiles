@@ -18,6 +18,9 @@ git config --global fetch.prune true
 git config --global diff.colorMoved zebra
 git config --global core.ignorecase false
 git config --global core.editor 'nvim'
+git config --global column.ui auto
+git config --global branch.sort -committerdate
+
 
 export GPG_TTY="$(tty)"
 

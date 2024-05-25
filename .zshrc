@@ -7,8 +7,8 @@ plugins=(
   git
   ssh-agent
 )
- 
-function addPath () {
+
+function addPath() {
   export PATH="$PATH:$1"
 }
 
@@ -30,14 +30,12 @@ addPath /usr/local/bin
 addPath /opt/homebrew/bin
 addPath ~/Library/Python/3.8/bin
 
-
 export CPATH="/opt/homebrew/include"
 export LIBRARY_PATH="/opt/homebrew/lib"
 export LD_LIBRARY_PATH="/opt/homebrew/lib"
 export DYLD_LIBRARY_PATH="/opt/homebrew/CEllaR"
 
 source $HOME/.env/source
-
 
 export PATH="/opt/homebrew/opt/php@5.6/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@5.6/sbin:$PATH"
@@ -46,8 +44,8 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 # pnpm
 export PNPM_HOME="/Users/jarred/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
@@ -58,3 +56,20 @@ esac
 export BUN_INSTALL="$HOME/.tools/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=$PATH:$HOME/.maestro/bin
+
+# nim
+export PATH=/Users/jarred/.nimble/bin:$PATH
+
+export BW_SESSION="tp/qozsJ2snL2v+pTsNqarZ3DZCDs0mS8NKP2Gr5DmKWK+Y4BFliBYLRdtq0pB83QVxzmxD5SE13pk/SPuZigw=="
+
+eval $(thefuck --alias)
+
+# Fix option-left / option-right in shell
+bindkey -e
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word
+export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
+
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi

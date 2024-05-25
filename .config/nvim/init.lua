@@ -10,8 +10,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.encoding = "utf8"
 vim.opt.fileencoding = "utf8"
 vim.opt.syntax = "ON"
--- vim.opt.termguicolors = true
--- vim.opt.background = "dark"
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = false
@@ -45,7 +45,6 @@ if vim.g.vscode then
 else
 
     require('lazy').setup({
-        "tpope/vim-fugitive", "tpope/vim-sleuth", "nvim-tree/nvim-web-devicons",
         "nvim-lua/plenary.nvim",
         {"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"},
         "famiu/bufdelete.nvim", "windwp/nvim-autopairs",
@@ -345,10 +344,9 @@ else
 
     require("lualine").setup({
         options = {
-            theme = "gruvbox",
+            theme = "base16",
             globalstatus = true,
             icons_enabled = false,
-            theme = 'onedark',
             component_separators = '|',
             section_separators = ''
 
