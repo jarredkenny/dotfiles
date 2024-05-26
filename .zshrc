@@ -73,3 +73,5 @@ export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
+
+if [ "$TMUX" = "" ]; then tmuxinator start main; fi
