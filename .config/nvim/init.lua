@@ -23,7 +23,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.tabstop = 2
-vim.opt.colorcolumn = "0"
+-- vim.opt.colorcolumn = "0"
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
 vim.g.t_co = 256
@@ -45,7 +45,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"nvim-lua/plenary.nvim",
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	{ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
 	"famiu/bufdelete.nvim",
 	"windwp/nvim-autopairs",
@@ -394,6 +394,71 @@ require("typescript-tools").setup({
 	},
 })
 
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+local lsp_symbols = {
+	Text = "   (Text) ",
+	Method = "   (Method)",
+	Function = "   (Function)",
+	Constructor = "   (Constructor)",
+	Field = " ﴲ  (Field)",
+	Variable = "[] (Variable)",
+	Class = "   (Class)",
+	Interface = " ﰮ  (Interface)",
+	Module = "   (Module)",
+	Property = " 襁 (Property)",
+	Unit = "   (Unit)",
+	Value = "   (Value)",
+	Enum = " 練 (Enum)",
+	Keyword = "   (Keyword)",
+	Snippet = "   (Snippet)",
+	Color = "   (Color)",
+	File = "   (File)",
+	Reference = "   (Reference)",
+	Folder = "   (Folder)",
+	EnumMember = "   (EnumMember)",
+	Constant = " ﲀ  (Constant)",
+	Struct = " ﳤ  (Struct)",
+	Event = "   (Event)",
+	Operator = "   (Operator)",
+	TypeParameter = "   (TypeParameter)",
+}
+
+local select_opts = { behavior = cmp.SelectBehavior.Select }
+
+cmp.setup({
+	sources = {
+		{ name = "buffer" },
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "neorg" },
+	},
+	mapping = {
+		["<Up>"] = cmp.mapping.select_prev_item(select_opts),
+		["<Down>"] = cmp.mapping.select_next_item(select_opts),
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<C-Space>"] = cmp.mapping.complete(),
+	},
+	formatting = {
+		format = function(entry, item)
+			item.kind = lsp_symbols[item.kind]
+			item.menu = ({
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[Snippet]",
+				neorg = "[Neorg]",
+			})[entry.source.name]
+
+			return item
+		end,
+	},
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
+})
+
 local map = vim.api.nvim_set_keymap
 map("n", "<leader>G", [[:DiffviewToggle<CR>]], {})
 map("n", "<leader>n", [[:NvimTreeToggle<CR>]], {})
@@ -424,4 +489,4 @@ map("n", "<leader><Right>", ":wincmd l<CR>", {})
 map("n", "<leader><Up>", ":wincmd k<CR>", {})
 map("n", "<leader><Down>", ":wincmd j<CR>", {})
 
--- vim: ts=2 sts=2 sw=2 et
+-- vim:  ts=2 sts=2 sw=2 et
