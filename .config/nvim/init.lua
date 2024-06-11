@@ -27,7 +27,7 @@ vim.opt.tabstop = 2
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
 vim.g.t_co = 256
-vim.cmd([[colorscheme base16-tomorrow-night]])
+vim.cmd([[colorscheme base16-catppuccin-mocha]])
 vim.cmd([[cnoreabbrev W w]])
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -45,7 +45,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"nvim-lua/plenary.nvim",
-	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	{ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
 	"famiu/bufdelete.nvim",
 	"windwp/nvim-autopairs",
@@ -74,7 +73,13 @@ require("lazy").setup({
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"fedepujol/move.nvim",
 	"sindrets/diffview.nvim",
-	"github/copilot.vim",
+	-- "github/copilot.vim",
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -311,8 +316,6 @@ local servers = {
 	},
 }
 
-require("neodev").setup()
-
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -480,8 +483,7 @@ map("v", "<C-S-Left>", ":MoveHBlock(-1)<CR>", {})
 map("v", "<C-S-Right>", ":MoveHBlock(1)<CR>", {})
 map("i", "<C-S-Up>", "<Esc>:m .-2<CR>==gi", {})
 map("i", "<C-S-Down>", "<Esc>:m .+1<CR>==gi", {})
-map("n", "<leader>w", ":Bdelete<CR>", {})
-map("n", "<leader>W", ":Bwipeout<CR>", {})
+map("n", "<leader>w", ":Bwipeout<CR>", {})
 map("n", "<leader>v", ":vsplit<CR>", {})
 map("n", "<leader>h", ":split<CR>", {})
 map("n", "<leader><Left>", ":wincmd h<CR>", {})

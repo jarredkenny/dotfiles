@@ -2,10 +2,12 @@ export ZSH=$HOME/.tools/oh-my-zsh
 export DEFAULT_USER=$USER
 export ZSH_THEME="agnoster"
 export ZSH_DISABLE_COMPFIX=true
+export ZSH_TMUX_AUTOSTART=true
 
 plugins=(
   git
   ssh-agent
+  tmux
 )
 
 function addPath() {
@@ -74,4 +76,4 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
-if [ "$TMUX" = "" ]; then tmuxinator start main; fi
+export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
