@@ -61,13 +61,14 @@ require("lazy").setup({
 	"RRethy/vim-illuminate",
 	"folke/todo-comments.nvim",
 	"DanilaMihailov/beacon.nvim",
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	},
 	"RRethy/nvim-base16",
-	"karb94/neoscroll.nvim",
 	"petertriho/nvim-scrollbar",
+	"karb94/neoscroll.nvim",
 	{ "j-hui/fidget.nvim", tag = "legacy" },
 	"terrortylor/nvim-comment",
 	"JoosepAlviste/nvim-ts-context-commentstring",
@@ -167,6 +168,11 @@ require("lazy").setup({
 	},
 })
 
+require("toggleterm").setup({
+	open_mapping = [[<leader><enter>]],
+	shading_factor = 0.1,
+})
+require("neoscroll").setup({})
 require("auto-session").setup({})
 require("nvim-tree").setup({})
 require("nvim-autopairs").setup({})
