@@ -2,7 +2,7 @@ export ZSH=$HOME/.tools/oh-my-zsh
 export DEFAULT_USER=$USER
 export ZSH_THEME="agnoster"
 export ZSH_DISABLE_COMPFIX=true
-export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
 
 plugins=(
   git
@@ -77,3 +77,10 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 fi
 
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+
+source <(fzf --zsh)
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+

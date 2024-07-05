@@ -1,0 +1,3 @@
+ctrl - l : osascript -e 'tell application "Spotify" to next track'
+ctrl - k : osascript -e 'tell application "Spotify" to previous track'
+ctrl + cmd - f : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
