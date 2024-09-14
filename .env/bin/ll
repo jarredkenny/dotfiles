@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Function to check if the current directory is a git repository
+function check_git_status {
+  if [ -d ".git" ]; then
+    echo "Git Repository detected."
+
+    # Get current branch
+    branch=$(git branch --show-current)
+    echo "Current Branch: $branch"
+
+    # Check if the repo is up to date
+    git fetch
+    local_status=$(git status -uno | grep "Your branch is up to date" > /dev/null && echo "Up to date" || echo "Behind or ahead")
+    echo "Repository Status: $local_status"
+
+    # Get the author and message of the last commit
+    last_author=$(git log -1 --pretty=format:'%an')
+    last_commit_message=$(git log -1 --pretty=format:'%s')
+    echo "Last Commit Made By: $last_author"
+    echo "Last Commit Message: $last_commit_message"
+  else
+    echo "Not a Git repository."
+  fi
+}
+
+# Run the function
+check_git_status

@@ -1,15 +1,14 @@
 #!/bin/bash
 
-ENVDIR="$( cd "$( dirname "$0" )" && pwd )"
+ENV_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+function addPath() {
+  export PATH="$PATH:$1"
+}
+
+
 
 git config --global core.editor "nvim"
-
-export PATH="$HOME/.env/bin:$PATH"
-export AWS_PAGER=""
-
-source $ENVDIR/aliases
-config config status.showUntrackedFiles no
-
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global user.email "jarred.kenny@tracktile.io"
 git config --global user.name "Jarred Kenny"
@@ -22,16 +21,26 @@ git config --global column.ui auto
 git config --global branch.sort -committerdate
 
 
+export PATH="$HOME/.env/bin:$PATH"
+export AWS_PAGER=""
 export GPG_TTY="$(tty)"
+
+source $ENV_DIR/aliases
 
 OS="`uname`"
 case $OS in
-    'Linux') source $ENVDIR/system/linux.env;;
-    'Darwin') source $ENVDIR/system/macos.env;;
+    'Linux') source $ENV_DIR/system/linux.env;;
+    'Darwin') source $ENV_DIR/system/macos.env;;
     *) echo "Unknown system type: $OS";;
 esac
 
 # Source env.zsh from each component or from supplied component
-for envfile in $(find $ENVDIR/components -name env.zsh); do
+for envfile in $(find $ENV_DIR/components -name env.zsh); do
   source $envfile
 done
+
+config config status.showUntrackedFiles no
+
+set -a
+. $HOME/.credentials
+set +a

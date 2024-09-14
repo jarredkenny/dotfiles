@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
-
 vim.opt.number = true
+
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.showmode = false
@@ -16,20 +16,17 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.list = false
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.hlsearch = true
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.opt.termguicolors = true
+vim.opt.cmdheight = 0
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+local map = vim.keymap.set
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -42,29 +39,77 @@ require("lazy").setup({
 	"tpope/vim-sleuth",
 	{
 		"fedepujol/move.nvim",
-		opts = {
-			--- Config
-		},
+		opts = {},
 	},
 	{ "RRethy/nvim-base16" },
 	{
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("nvim-tree").setup({})
+			require("nvim-tree").setup({
+				update_focused_file = {
+					enable = true,
+				},
+			})
+		end,
+	},
+	{
+		"famiu/bufdelete.nvim",
+	},
+	{
+		"sindrets/diffview.nvim",
+	},
+	{
+		"ggandor/leap.nvim",
+		enabled = true,
+		keys = {
+			{ "s", mode = { "n", "x", "o" }, desc = "Leap Forward to" },
+			{ "S", mode = { "n", "x", "o" }, desc = "Leap Backward to" },
+			{ "gs", mode = { "n", "x", "o" }, desc = "Leap from Windows" },
+		},
+		config = function(_, opts)
+			local leap = require("leap")
+			for k, v in pairs(opts) do
+				leap.opts[k] = v
+			end
+			leap.add_default_mappings(true)
+			vim.keymap.del({ "x", "o" }, "x")
+			vim.keymap.del({ "x", "o" }, "X")
 		end,
 	},
 	{
 		"terrortylor/nvim-comment",
 		config = function()
-			require("nvim_comment").setup({
-				comment_empty = false,
-				hook = function()
-					if vim.api.nvim_buf_get_option(0, "filetype") == "vue" then
-						require("ts_context_commentstring.internal").update_commentstring()
-					end
-				end,
-			})
+			require("nvim_comment").setup({})
+		end,
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		opts = {},
+	},
+	{
+		"gbprod/cutlass.nvim",
+		opts = {},
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {
+			file_types = { "markdown", "Avante" },
+		},
+		ft = { "markdown", "Avante" },
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function()
+			require("ibl").setup()
+		end,
+	},
+	{
+		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.startify").config)
 		end,
 	},
 	{
@@ -78,6 +123,12 @@ require("lazy").setup({
 				changedelete = { text = "~" },
 			},
 		},
+	},
+	{
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("scrollbar").setup({})
+		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -101,6 +152,9 @@ require("lazy").setup({
 					colorscheme = {
 						enable_preview = true,
 					},
+					find_files = {
+						hidden = true,
+					},
 				},
 				extensions = {
 					["ui-select"] = {
@@ -111,37 +165,49 @@ require("lazy").setup({
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			map("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+			map("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+			map("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			map("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+			map("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+			map("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+			map("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+			map("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+			map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
-			vim.keymap.set("n", "<leader>?", function()
+			map("n", "<leader>?", function()
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 10,
 					previewer = false,
 				}))
 			end, { desc = "[/] Fuzzily search in current buffer" })
 
-			vim.keymap.set("n", "<leader>s/", function()
+			map("n", "<leader>s/", function()
 				builtin.live_grep({
 					grep_open_files = true,
 					prompt_title = "Live Grep in Open Files",
 				})
 			end, { desc = "[S]earch [/] in Open Files" })
 
-			vim.keymap.set("n", "<leader>sn", function()
+			map("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
 		end,
 	},
-
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		opts = {
+			options = {
+				offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+				show_buffer_icons = true,
+				show_close_icon = false,
+				show_tab_indicators = true,
+				always_show_bufferline = true,
+			},
+		},
+	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -156,7 +222,7 @@ require("lazy").setup({
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
 					local map = function(keys, func, desc)
-						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+						map("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
@@ -211,10 +277,12 @@ require("lazy").setup({
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local servers = {
-				tsserver = {},
 				lua_ls = {
 					settings = {
 						Lua = {
+							diagnostics = {
+								globals = { "vim" },
+							},
 							completion = {
 								callSnippet = "Replace",
 							},
@@ -267,7 +335,9 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				javascript = { { "prettierd", "prettier" } },
+				javascriptreact = { { "prettierd", "prettier" } },
 				typescript = { "prettierd", "prettier" },
+				typescriptreact = { { "prettierd", "prettier" } },
 				markdown = { "prettierd", "prettier" },
 			},
 		},
@@ -275,8 +345,55 @@ require("lazy").setup({
 	{
 		"supermaven-inc/supermaven-nvim",
 		config = function()
-			require("supermaven-nvim").setup({})
+			require("supermaven-nvim").setup({
+				log_level = "off",
+			})
 		end,
+	},
+	{
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		lazy = false,
+		version = false, -- set this if you want to always pull the latest change
+		opts = {
+			-- add any opts here
+		},
+		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+		build = "make BUILD_FROM_SOURCE=true",
+		-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+		dependencies = {
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			--- The below dependencies are optional,
+			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+			"zbirenbaum/copilot.lua", -- for providers='copilot'
+			{
+				-- support for image pasting
+				"HakonHarnes/img-clip.nvim",
+				event = "VeryLazy",
+				opts = {
+					-- recommended settings
+					default = {
+						embed_image_as_base64 = false,
+						prompt_for_file_name = false,
+						drag_and_drop = {
+							insert_mode = true,
+						},
+						-- required for Windows users
+						use_absolute_path = true,
+					},
+				},
+			},
+			{
+				-- Make sure to set this up properly if you have lazy=true
+				"MeanderingProgrammer/render-markdown.nvim",
+				opts = {
+					file_types = { "markdown", "Avante" },
+				},
+				ft = { "markdown", "Avante" },
+			},
+		},
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -322,20 +439,38 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{ "Yazeed1s/minimal.nvim" },
 	{
 		"rebelot/kanagawa.nvim",
-		priority = 1000,
+		priority = 1400,
 		init = function()
-			vim.cmd.colorscheme("kanagawa-wave")
+			-- vim.cmd.colorscheme("kanagawa-dragon")
 		end,
 	},
-
+	{
+		"sho-87/kanagawa-paper.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			transparent_background = true,
+		},
+		init = function()
+			vim.cmd.colorscheme("catppuccin-mocha")
+		end,
+	},
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{
 		"folke/trouble.nvim",
 		opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -352,7 +487,7 @@ require("lazy").setup({
 				desc = "Buffer Diagnostics (Trouble)",
 			},
 			{
-				"<leader>cs",
+				"<leader>cc",
 				"<cmd>Trouble symbols toggle focus=false<cr>",
 				desc = "Symbols (Trouble)",
 			},
@@ -372,18 +507,6 @@ require("lazy").setup({
 				desc = "Quickfix List (Trouble)",
 			},
 		},
-	},
-	{
-		"echasnovski/mini.nvim",
-		config = function()
-			require("mini.ai").setup({ n_lines = 500 })
-			require("mini.surround").setup()
-			local statusline = require("mini.statusline")
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
-		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -428,36 +551,46 @@ vim.cmd("cnoreabbrev Qw wq")
 vim.cmd("cnoreabbrev Wq wq")
 vim.cmd("cnoreabbrev WQ wq")
 
-local map = vim.api.nvim_set_keymap
-
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+map("n", "<leader>t", [[:ToggleTerm<CR>]], {})
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 map("n", "<leader>G", [[:DiffviewToggle<CR>]], {})
 map("n", "<leader>n", [[:NvimTreeToggle<CR>]], {})
-map("n", "<leader>N", "[[:NvimTreeFocus<CR>]]", {})
-map("n", "<leader>l", ":NvimTreeFindFile<CR>", {})
 map("n", "<leader>/", [[:CommentToggle<CR>]], {})
 map("v", "<leader>/", [[:CommentToggle<CR>]], {})
-map("n", "<leader>f", [[:Telescope find_files<CR>]], {})
+map("n", "<leader>f", [[:Telescope git_files<CR>]], {})
 map("n", "<leader>b", [[:Telescope buffers<CR>]], {})
 map("n", "<leader>g", [[:Telescope live_grep<CR>]], {})
 map("n", "<leader>cs", [[:Telescope colorscheme<CR>]], {})
+map("n", "<leader>l", [[:AvanteChat<CR>]], {})
 map("n", "<C-S-Up>", ":MoveLine(-1)<CR>", {})
 map("n", "<C-S-Down>", ":MoveLine(1)<CR>", {})
 map("v", "<C-S-Up>", ":MoveBlock(-1)<CR>", {})
 map("v", "<C-S-Down>", ":MoveBlock(1)<CR>", {})
-map("v", "<C-S-Left>", ":MoveHBlock(-1)<CR>", {})
-map("v", "<C-S-Right>", ":MoveHBlock(1)<CR>", {})
 map("i", "<C-S-Up>", "<Esc>:m .-2<CR>==gi", {})
 map("i", "<C-S-Down>", "<Esc>:m .+1<CR>==gi", {})
-map("n", "<leader>w", ":bdelete<CR>", {})
+map("n", "<leader>w", ":Bdelete<CR>", {})
 map("n", "<leader>v", ":vsplit<CR>", {})
 map("n", "<leader>h", ":split<CR>", {})
 map("n", "<leader><Left>", ":wincmd h<CR>", {})
 map("n", "<leader><Right>", ":wincmd l<CR>", {})
 map("n", "<leader><Up>", ":wincmd k<CR>", {})
 map("n", "<leader><Down>", ":wincmd j<CR>", {})
+map("v", "<leader>y", '"+y', {})
+map("n", "<Tab>", ">>", {})
+map("n", "<S-Tab>", "<<", {})
+map("v", "<Tab>", ">gv", {})
+map("v", "<S-Tab>", "<gv", {})
+map("i", "<S-Tab>", "<C-\\><C-N><<<C-\\><C-N>^i")
+map("n", "<C-Left>", ":vertical resize +5<CR>", {})
+map("n", "<C-Right>", ":vertical resize -5<CR>", {})
+map("n", "<C-Up>", ":resize +5<CR>", {})
+map("n", "<C-Down>", ":resize -5<CR>", {})
+map("n", "<C-s>", ":w<CR>", {})
+map("n", "<C-w>", ":w<CR>", {})
 
-vim.keymap.set("n", "<Tab>", ">>", opts)
-vim.keymap.set("n", "<S-Tab>", "<<", opts)
-vim.keymap.set("v", "<Tab>", ">gv", opts)
-vim.keymap.set("v", "<S-Tab>", "<gv", opts)
-vim.keymap.set("i", "<S-Tab>", "<C-\\><C-N><<<C-\\><C-N>^i")
+-- vim.cmd.colorscheme("kanagawa")
+vim.cmd(":hi WinSeparator guibg=#1d1f21 guifg=#1d1f21")
+require("avante_lib").load()

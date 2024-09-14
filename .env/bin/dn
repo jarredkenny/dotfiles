@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+BASE_DIR=$HOME/Journal
+YYYY_MM_DD=$(date +%Y-%m-%d)
+FILE="$BASE_DIR/$YYYY_MM_DD.md"
+
+if [ ! -f "$FILE" ]; then
+    mkdir -p $BASE_DIR
+    echo "# $YYYY_MM_DD" > $FILE
+fi
+
+nvim $FILE

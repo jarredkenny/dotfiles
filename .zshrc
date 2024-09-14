@@ -2,12 +2,12 @@ export ZSH=$HOME/.tools/oh-my-zsh
 export DEFAULT_USER=$USER
 export ZSH_THEME="agnoster"
 export ZSH_DISABLE_COMPFIX=true
-export ZSH_TMUX_AUTOSTART=false
 
 plugins=(
   git
   ssh-agent
-  tmux
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 function addPath() {
@@ -16,7 +16,6 @@ function addPath() {
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR="nvim"
 export LIBVIRT_DEFAULT_URI="qemu:///session"
 export JAVA_HOME="/opt/homebrew/opt/openjdk@11/"
 export ANDROID_HOME="/Users/jarred/Library/Android/sdk"
@@ -83,4 +82,10 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+
+export PATH=$PATH:/Users/jarred/.tools/maestro/bin
+
+# bun
+export BUN_INSTALL="$HOME/.tools/bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
