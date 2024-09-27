@@ -2,6 +2,16 @@ ctrl - l : osascript -e 'tell application "Spotify" to next track'
 ctrl - k : osascript -e 'tell application "Spotify" to previous track'
 ctrl + cmd - f : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
 
+ctrl + cmd - left : yabai -m window --focus west
+ctrl + cmd - right : yabai -m window --focus east
+ctrl + cmd - up : yabai -m window --focus north
+ctrl + cmd - down : yabai -m window --focus south
+
+ctrl + shift + cmd - left : yabai -m window --swap west
+ctrl + shift + cmd - right : yabai -m window --swap east
+ctrl + shift + cmd - up : yabai -m window --swap north
+ctrl + shift + cmd - down : yabai -m window --swap south
+
 ctrl + shift - 1 : yabai -m window --space 1
 ctrl + shift - 2 : yabai -m window --space 2
 ctrl + shift - 3 : yabai -m window --space 3

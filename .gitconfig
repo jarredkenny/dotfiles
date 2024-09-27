@@ -2,15 +2,6 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = nvim
 	ignorecase = false
-[diff]
-	tool = Kaleidoscope
-	colorMoved = zebra
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
-[merge]
-	tool = Kaleidoscope
-[mergetool "vscode"]
-	tool = code --wait $MERGED
 [user]
 	email = jarred.kenny@tracktile.io
 	name = Jarred Kenny
@@ -27,13 +18,8 @@
 	ui = auto
 [branch]
 	sort = -committerdate
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
-	trustExitCode = true
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [mergetool]
 	prompt = false
@@ -42,3 +28,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[init]
+	defaultBranch = main
+[diff]
+	colorMoved = zebra

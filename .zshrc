@@ -88,4 +88,3 @@ export PATH=$PATH:/Users/jarred/.tools/maestro/bin
 # bun
 export BUN_INSTALL="$HOME/.tools/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-

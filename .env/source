@@ -6,8 +6,6 @@ function addPath() {
   export PATH="$PATH:$1"
 }
 
-
-
 git config --global core.editor "nvim"
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global user.email "jarred.kenny@tracktile.io"
@@ -24,6 +22,7 @@ git config --global branch.sort -committerdate
 export PATH="$HOME/.env/bin:$PATH"
 export AWS_PAGER=""
 export GPG_TTY="$(tty)"
+export EDITOR="nvim"
 
 source $ENV_DIR/aliases
 
@@ -42,5 +41,5 @@ done
 config config status.showUntrackedFiles no
 
 set -a
-. $HOME/.credentials
+. $HOME/.env/.env
 set +a

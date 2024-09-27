@@ -6,19 +6,16 @@ yabai -m config mouse_modifier ctrl
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 yabai -m mouse_drop_action swap
-yabai -m config  window_border on
-yabai -m config window_border_width 0
-yabai -m config active_window_border_color 0xff775759
-yabai -m config normal_window_border_color 0xff555555
-yabai -m config top_padding 0
-yabai -m config bottom_padding 0
-yabai -m config left_padding   0
-yabai -m config right_padding  0
-yabai -m config window_gap     0
+yabai -m config top_padding 32
+yabai -m config bottom_padding 32
+yabai -m config left_padding   32
+yabai -m config right_padding  32
+yabai -m config window_gap     32
+
 
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Loom$" manage=off
 yabai -m rule --add app="^Hand Mirror$" manage=off
 
-
+borders active_color=0xffed8796 inactive_color=0xffeceae9 width=8.0 &

@@ -351,6 +351,16 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"OlegGulevskyy/better-ts-errors.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		config = {
+			keymaps = {
+				toggle = "<leader>dd", -- default '<leader>dd'
+				go_to_definition = "<leader>dx", -- default '<leader>dx'
+			},
+		},
+	},
+	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		lazy = false,
@@ -591,6 +601,6 @@ map("n", "<C-Down>", ":resize -5<CR>", {})
 map("n", "<C-s>", ":w<CR>", {})
 map("n", "<C-w>", ":w<CR>", {})
 
--- vim.cmd.colorscheme("kanagawa")
+-- vim.cmd.colorscheme("base16-catppuccin-mocha")
 vim.cmd(":hi WinSeparator guibg=#1d1f21 guifg=#1d1f21")
 require("avante_lib").load()
