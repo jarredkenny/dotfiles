@@ -16,6 +16,10 @@ function addPath() {
 
 source $ZSH/oh-my-zsh.sh
 
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    export TERM=xterm-256color
+fi
+
 export LIBVIRT_DEFAULT_URI="qemu:///session"
 export JAVA_HOME="/opt/homebrew/opt/openjdk@11/"
 export ANDROID_HOME="/Users/jarred/Library/Android/sdk"
@@ -61,8 +65,6 @@ export PATH=$PATH:$HOME/.maestro/bin
 # nim
 export PATH=/Users/jarred/.nimble/bin:$PATH
 
-export BW_SESSION="tp/qozsJ2snL2v+pTsNqarZ3DZCDs0mS8NKP2Gr5DmKWK+Y4BFliBYLRdtq0pB83QVxzmxD5SE13pk/SPuZigw=="
-
 eval $(thefuck --alias)
 
 # Fix option-left / option-right in shell
@@ -83,8 +85,17 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
-export PATH=$PATH:/Users/jarred/.tools/maestro/bin
-
 # bun
 export BUN_INSTALL="$HOME/.tools/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# Tmux auto-start/attach
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$VSCODE_INJECTION" ] && [ -z "$CURSOR_TERM" ]; then
+  # If a session named "default" exists, attach to it, otherwise create it
+  if tmux has-session -t default 2>/dev/null; then
+    exec tmux attach-session -t default
+  else
+    exec tmux new-session -s default
+  fi
+fi
