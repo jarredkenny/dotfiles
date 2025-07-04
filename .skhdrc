@@ -12,12 +12,14 @@ ctrl + shift + cmd - right : yabai -m window --swap east
 ctrl + shift + cmd - up : yabai -m window --swap north
 ctrl + shift + cmd - down : yabai -m window --swap south
 
-ctrl + shift - 1 : yabai -m window --space 1
-ctrl + shift - 2 : yabai -m window --space 2
-ctrl + shift - 3 : yabai -m window --space 3
-ctrl + shift - 4 : yabai -m window --space 4
-ctrl + shift - 5 : yabai -m window --space 5
-ctrl + shift - 6 : yabai -m window --space 6
-ctrl + shift - 7 : yabai -m window --space 7
-ctrl + shift - 8 : yabai -m window --space 8
-ctrl + shift - 9 : yabai -m window --space 9
+
+# Open iterm2.
+ctrl - 1 : osascript -e 'tell application "Ghostty" to activate' 
+ctrl - 2 : osascript -e 'tell application "Cursor" to activate'
+ctrl - 3 : osascript -e 'tell application "Brave" to activate'
+ctrl - 4 : osascript -e 'tell application "Slack" to activate'
+ctrl - 5 : osascript -e 'tell application "Asana" to activate'
+
+
+# open Chrome.
+cmd + shift - return : open -n -a "Google Chrome"

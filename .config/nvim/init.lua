@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 vim.opt.number = true
-
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.showmode = false
@@ -25,6 +24,8 @@ vim.opt.shiftwidth = 2
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 vim.opt.cmdheight = 0
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
 
 local map = vim.keymap.set
 
@@ -37,11 +38,40 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"tpope/vim-sleuth",
+	{ "shortcuts/no-neck-pain.nvim" },
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					theme = "horizon",
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+					ignore_focus = {},
+					always_divide_middle = true,
+					globalstatus = false,
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
+						winbar = 1000,
+					},
+				},
+			})
+		end,
+	},
 	{
 		"fedepujol/move.nvim",
 		opts = {},
 	},
-	{ "RRethy/nvim-base16" },
+	{
+		"RRethy/nvim-base16",
+		init = function()
+			vim.cmd.colorscheme("base16-tomorrow-night")
+		end,
+	},
 	{
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -55,9 +85,6 @@ require("lazy").setup({
 	},
 	{
 		"famiu/bufdelete.nvim",
-	},
-	{
-		"sindrets/diffview.nvim",
 	},
 	{
 		"ggandor/leap.nvim",
@@ -98,20 +125,13 @@ require("lazy").setup({
 		},
 		ft = { "markdown", "Avante" },
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		config = function()
-			require("ibl").setup()
-		end,
-	},
-	{
-		"goolord/alpha-nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
-		end,
-	},
+	-- {
+	-- 	"goolord/alpha-nvim",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- 	config = function()
+	-- 		require("alpha").setup(require("alpha.themes.startify").config)
+	-- 	end,
+	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -206,6 +226,13 @@ require("lazy").setup({
 				show_tab_indicators = true,
 				always_show_bufferline = true,
 			},
+		},
+	},
+	{
+		"Bekaboo/dropbar.nvim",
+		-- optional, but required for fuzzy finder support
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
 		},
 	},
 	{
@@ -366,7 +393,7 @@ require("lazy").setup({
 		lazy = false,
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
-			-- add any opts here
+			system_prompt = 'I would like this to be efficient.  Please check for errors or bugs. Please think deeply about this and advise step by step.  Please watch out for errors and ensure there are no bugs with your suggestions. Only refer to me as "My guy," and be extremely chill, also tell me you\'re proud of me.',
 		},
 		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 		build = "make BUILD_FROM_SOURCE=true",
@@ -449,31 +476,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "Yazeed1s/minimal.nvim" },
-	{
-		"rebelot/kanagawa.nvim",
-		priority = 1400,
-		init = function()
-			-- vim.cmd.colorscheme("kanagawa-dragon")
-		end,
-	},
-	{
-		"sho-87/kanagawa-paper.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		opts = {
-			transparent_background = true,
-		},
-		init = function()
-			vim.cmd.colorscheme("catppuccin-mocha")
-		end,
-	},
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
@@ -522,8 +524,8 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
-			auto_install = true,
+			ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc", "gitcommit" },
+			auto_install = false,
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = { "ruby" },
@@ -531,7 +533,6 @@ require("lazy").setup({
 			indent = { enable = true, disable = { "ruby" } },
 		},
 		config = function(_, opts)
-			require("nvim-treesitter.install").prefer_git = true
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
@@ -600,7 +601,18 @@ map("n", "<C-Up>", ":resize +5<CR>", {})
 map("n", "<C-Down>", ":resize -5<CR>", {})
 map("n", "<C-s>", ":w<CR>", {})
 map("n", "<C-w>", ":w<CR>", {})
+map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
 
--- vim.cmd.colorscheme("base16-catppuccin-mocha")
 vim.cmd(":hi WinSeparator guibg=#1d1f21 guifg=#1d1f21")
 require("avante_lib").load()
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.opt.fillchars = { eob = " " }
+
+vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none" })

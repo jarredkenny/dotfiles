@@ -41,3 +41,7 @@ alias wttr="curl https://wttr.in/"
 alias ls="eza --icons=always"
 alias a="tmux a"
 alias x="exit"
+
+nixos() {
+  ssh jarred@$(utmctl ip-address NixOS | head -n 1)
+}

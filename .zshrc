@@ -91,11 +91,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Tmux auto-start/attach
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$VSCODE_INJECTION" ] && [ -z "$CURSOR_TERM" ]; then
-  # If a session named "default" exists, attach to it, otherwise create it
-  if tmux has-session -t default 2>/dev/null; then
-    exec tmux attach-session -t default
-  else
-    exec tmux new-session -s default
-  fi
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$VSCODE_INJECTION" ] && [ -z "$CURSOR_TERM" ]; then
+#   # If a session named "default" exists, attach to it, otherwise create it
+#   if tmux has-session -t default 2>/dev/null; then
+#     exec tmux attach-session -t default
+#   else
+#     exec tmux new-session -s default
+#   fi
+# fi
