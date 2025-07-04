@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ccusage blocks --live --json \
+  | jq -r '
+      .blocks[]
+      | select(.isActive)
+      | (.startTime | sub("\\..*Z$";"Z") | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime) as $s
+      | (.endTime   | sub("\\..*Z$";"Z") | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime) as $e
+      | (($s - 10800) | strftime("%H:%M")) as $localStart
+      | ((((now - $s) / ($e - $s) * 100 * 10) | floor) / 10) as $pct
+      | "\($localStart) \($pct)%"
+    '

@@ -1,0 +1,6 @@
+GAPS=$1
+yabai -m config window_gap "$GAPS"
+yabai -m config top_padding "$GAPS"
+yabai -m config bottom_padding "$GAPS"
+yabai -m config left_padding "$GAPS"
+yabai -m config right_padding "$GAPS"

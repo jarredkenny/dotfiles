@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ccusage blocks --live --json \
+  | jq '
+      .blocks[]
+      | select(.isActive)
+      | .totalTokens
+    '
