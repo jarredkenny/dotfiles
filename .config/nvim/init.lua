@@ -40,16 +40,42 @@ require("lazy").setup({
 	"tpope/vim-sleuth",
 	{ "shortcuts/no-neck-pain.nvim" },
 	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		init = function()
+			require("bufferline").setup({})
+		end,
+	},
+	{
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({
+				-- config
+				config = {
+					header = {},
+					week_header = {},
+					footer = {},
+				},
+			})
+		end,
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "horizon",
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
-					disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+					theme = "auto",
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {
+						statusline = {},
+						winbar = {},
+					},
 					ignore_focus = {},
 					always_divide_middle = true,
 					globalstatus = false,
@@ -59,6 +85,26 @@ require("lazy").setup({
 						winbar = 1000,
 					},
 				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = { "filename" },
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				winbar = {},
+				inactive_winbar = {},
+				extensions = {},
 			})
 		end,
 	},
@@ -69,7 +115,28 @@ require("lazy").setup({
 	{
 		"RRethy/nvim-base16",
 		init = function()
-			vim.cmd.colorscheme("base16-tomorrow-night")
+			-- vim.cmd.colorscheme("base16-catppuccin")
+		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		init = function()
+			-- vim.cmd.colorscheme("kanagawa")
+		end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		init = function()
+			-- vim.cmd.colorscheme("catppuccin-mocha")
+		end,
+	},
+	{
+		"vague2k/vague.nvim",
+		config = function()
+			require("vague").setup({
+				vim.cmd.colorscheme("vague"),
+			})
 		end,
 	},
 	{
@@ -85,24 +152,6 @@ require("lazy").setup({
 	},
 	{
 		"famiu/bufdelete.nvim",
-	},
-	{
-		"ggandor/leap.nvim",
-		enabled = true,
-		keys = {
-			{ "s", mode = { "n", "x", "o" }, desc = "Leap Forward to" },
-			{ "S", mode = { "n", "x", "o" }, desc = "Leap Backward to" },
-			{ "gs", mode = { "n", "x", "o" }, desc = "Leap from Windows" },
-		},
-		config = function(_, opts)
-			local leap = require("leap")
-			for k, v in pairs(opts) do
-				leap.opts[k] = v
-			end
-			leap.add_default_mappings(true)
-			vim.keymap.del({ "x", "o" }, "x")
-			vim.keymap.del({ "x", "o" }, "X")
-		end,
 	},
 	{
 		"terrortylor/nvim-comment",
@@ -121,17 +170,10 @@ require("lazy").setup({
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {
-			file_types = { "markdown", "Avante" },
+			file_types = { "markdown" },
 		},
-		ft = { "markdown", "Avante" },
+		ft = { "markdown" },
 	},
-	-- {
-	-- 	"goolord/alpha-nvim",
-	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	-- 	config = function()
-	-- 		require("alpha").setup(require("alpha.themes.startify").config)
-	-- 	end,
-	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -193,8 +235,10 @@ require("lazy").setup({
 			map("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 			map("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 			map("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-			map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files (".") for repeat' })
 			map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			-- Sumbol search
+			map("n", "<leader>o", builtin.lsp_document_symbols, { desc = "[O]pen [S]ymbols" })
 
 			map("n", "<leader>?", function()
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
@@ -214,26 +258,6 @@ require("lazy").setup({
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
 		end,
-	},
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		opts = {
-			options = {
-				offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-				show_buffer_icons = true,
-				show_close_icon = false,
-				show_tab_indicators = true,
-				always_show_bufferline = true,
-			},
-		},
-	},
-	{
-		"Bekaboo/dropbar.nvim",
-		-- optional, but required for fuzzy finder support
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -361,10 +385,10 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { { "prettierd", "prettier" } },
-				javascriptreact = { { "prettierd", "prettier" } },
+				javascript = { "prettierd", "prettier" },
+				javascriptreact = { "prettierd", "prettier" },
 				typescript = { "prettierd", "prettier" },
-				typescriptreact = { { "prettierd", "prettier" } },
+				typescriptreact = { "prettierd", "prettier" },
 				markdown = { "prettierd", "prettier" },
 			},
 		},
@@ -384,51 +408,6 @@ require("lazy").setup({
 			keymaps = {
 				toggle = "<leader>dd", -- default '<leader>dd'
 				go_to_definition = "<leader>dx", -- default '<leader>dx'
-			},
-		},
-	},
-	{
-		"yetone/avante.nvim",
-		event = "VeryLazy",
-		lazy = false,
-		version = false, -- set this if you want to always pull the latest change
-		opts = {
-			system_prompt = 'I would like this to be efficient.  Please check for errors or bugs. Please think deeply about this and advise step by step.  Please watch out for errors and ensure there are no bugs with your suggestions. Only refer to me as "My guy," and be extremely chill, also tell me you\'re proud of me.',
-		},
-		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-		build = "make BUILD_FROM_SOURCE=true",
-		-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-		dependencies = {
-			"stevearc/dressing.nvim",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			--- The below dependencies are optional,
-			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			"zbirenbaum/copilot.lua", -- for providers='copilot'
-			{
-				-- support for image pasting
-				"HakonHarnes/img-clip.nvim",
-				event = "VeryLazy",
-				opts = {
-					-- recommended settings
-					default = {
-						embed_image_as_base64 = false,
-						prompt_for_file_name = false,
-						drag_and_drop = {
-							insert_mode = true,
-						},
-						-- required for Windows users
-						use_absolute_path = true,
-					},
-				},
-			},
-			{
-				-- Make sure to set this up properly if you have lazy=true
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
 			},
 		},
 	},
@@ -475,6 +454,21 @@ require("lazy").setup({
 				},
 			})
 		end,
+	},
+	{
+		"azorng/goose.nvim",
+		config = function()
+			require("goose").setup({})
+		end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"MeanderingProgrammer/render-markdown.nvim",
+				opts = {
+					anti_conceal = { enabled = false },
+				},
+			},
+		},
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -524,7 +518,18 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc", "gitcommit" },
+			ensure_installed = {
+				"bash",
+				"c",
+				"diff",
+				"html",
+				"lua",
+				"luadoc",
+				"markdown",
+				"vim",
+				"vimdoc",
+				"gitcommit",
+			},
 			auto_install = false,
 			highlight = {
 				enable = true,
@@ -556,6 +561,53 @@ require("lazy").setup({
 	},
 })
 
+-- Default configuration with all available options
+require("goose").setup({
+	default_global_keymaps = true, -- If false, disables all default global keymaps
+	keymap = {
+		global = {
+			toggle = "<leader>gg", -- Open goose. Close if opened
+			open_input = "<leader>gi", -- Opens and focuses on input window on insert mode
+			open_input_new_session = "<leader>gI", -- Opens and focuses on input window on insert mode. Creates a new session
+			open_output = "<leader>go", -- Opens and focuses on output window
+			toggle_focus = "<leader>gt", -- Toggle focus between goose and last window
+			close = "<leader>gq", -- Close UI windows
+			toggle_fullscreen = "<leader>gf", -- Toggle between normal and fullscreen mode
+			select_session = "<leader>gs", -- Select and load a goose session
+			goose_mode_chat = "<leader>gmc", -- Set goose mode to `chat`. (Tool calling disabled. No editor context besides selections)
+			goose_mode_auto = "<leader>gma", -- Set goose mode to `auto`. (Default mode with full agent capabilities)
+			configure_provider = "<leader>gp", -- Quick provider and model switch from predefined list
+			diff_open = "<leader>gd", -- Opens a diff tab of a modified file since the last goose prompt
+			diff_next = "<leader>g]", -- Navigate to next file diff
+			diff_prev = "<leader>g[", -- Navigate to previous file diff
+			diff_close = "<leader>gc", -- Close diff view tab and return to normal editing
+			diff_revert_all = "<leader>gra", -- Revert all file changes since the last goose prompt
+			diff_revert_this = "<leader>grt", -- Revert current file changes since the last goose prompt
+		},
+		window = {
+			submit = "<cr>", -- Submit prompt
+			close = "<esc>", -- Close UI windows
+			stop = "<C-c>", -- Stop goose while it is running
+			next_message = "]]", -- Navigate to next message in the conversation
+			prev_message = "[[", -- Navigate to previous message in the conversation
+			mention_file = "@", -- Pick a file and add to context. See File Mentions section
+			toggle_pane = "<tab>", -- Toggle between input and output panes
+			prev_prompt_history = "<up>", -- Navigate to previous prompt in history
+			next_prompt_history = "<down>", -- Navigate to next prompt in history
+		},
+	},
+	ui = {
+		window_width = 0.35, -- Width as percentage of editor width
+		input_height = 0.15, -- Input height as percentage of window height
+		fullscreen = false, -- Start in fullscreen mode (default: false)
+		layout = "right", -- Options: "center" or "right"
+		floating_height = 0.8, -- Height as percentage of editor height for "center" layout
+		display_model = true, -- Display model name on top winbar
+		display_goose_mode = true, -- Display mode on top winbar: auto|chat
+	},
+	providers = {},
+})
+
 vim.cmd("cnoreabbrev W w")
 vim.cmd("cnoreabbrev Q q")
 vim.cmd("cnoreabbrev Qw wq")
@@ -575,7 +627,6 @@ map("n", "<leader>f", [[:Telescope git_files<CR>]], {})
 map("n", "<leader>b", [[:Telescope buffers<CR>]], {})
 map("n", "<leader>g", [[:Telescope live_grep<CR>]], {})
 map("n", "<leader>cs", [[:Telescope colorscheme<CR>]], {})
-map("n", "<leader>l", [[:AvanteChat<CR>]], {})
 map("n", "<C-S-Up>", ":MoveLine(-1)<CR>", {})
 map("n", "<C-S-Down>", ":MoveLine(1)<CR>", {})
 map("v", "<C-S-Up>", ":MoveBlock(-1)<CR>", {})
@@ -589,7 +640,7 @@ map("n", "<leader><Left>", ":wincmd h<CR>", {})
 map("n", "<leader><Right>", ":wincmd l<CR>", {})
 map("n", "<leader><Up>", ":wincmd k<CR>", {})
 map("n", "<leader><Down>", ":wincmd j<CR>", {})
-map("v", "<leader>y", '"+y', {})
+map("v", "<leader>y", '"oy', {})
 map("n", "<Tab>", ">>", {})
 map("n", "<S-Tab>", "<<", {})
 map("v", "<Tab>", ">gv", {})
@@ -602,17 +653,17 @@ map("n", "<C-Down>", ":resize -5<CR>", {})
 map("n", "<C-s>", ":w<CR>", {})
 map("n", "<C-w>", ":w<CR>", {})
 map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
+map("n", "<C-d>", "<C-d>", {})
 
 vim.cmd(":hi WinSeparator guibg=#1d1f21 guifg=#1d1f21")
-require("avante_lib").load()
-
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.opt.fillchars = { eob = " " }
 
-vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none" })
+vim.opt.fillchars = { eob = " " }
+--
+vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none", fg = "grey" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "grey" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none", fg = "grey" })

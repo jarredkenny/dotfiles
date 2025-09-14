@@ -9,12 +9,14 @@ alias e='nvim'
 alias vim='nvim'
 alias lsd="ls -ltrh"
 alias gl='git log --pretty=format:'\''%Cred%h %Cblue%ci%Creset %G? %an %Cgreen%s%Creset'\'''
+alias gblm='git blame -w -C -C -C'
 alias cln='git clone'
 alias co='git checkout'
 alias gdf='git difftool -y'
 alias gds='git diff --staged'
-alias gs='git status'
+alias gs='git status --short'
 alias gaa='git add -A .'
+alias gb='git branch --column'
 alias gcm='git commit -m '
 alias gp='git push'
 alias gpuh='git push -u origin HEAD'
@@ -30,9 +32,9 @@ alias dsp='docker system prune'
 alias dspa='docker system prune --all'
 alias dsa='docker stop $(docker ps -aq)'
 alias dra='docker rm $(docker ps -aq)'
+alias dka='docker kill $(docker ps -q)'
 alias lg='lazygit'
 alias awslocal='aws --endpoint-url=http://localhost:4566'
-alias cat='bat'
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 alias at="alacritty-themes"
 alias ci="glab ci view"
@@ -41,7 +43,5 @@ alias wttr="curl https://wttr.in/"
 alias ls="eza --icons=always"
 alias a="tmux a"
 alias x="exit"
-
-nixos() {
-  ssh jarred@$(utmctl ip-address NixOS | head -n 1)
-}
+alias i="pnpm i"
+alias todo="nvim ~/todo.md"
