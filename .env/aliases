@@ -1,3 +1,4 @@
+alias c='clear'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias bootstrap='$HOME/.env/bootstrap'
 alias ll='$HOME/.env/bin/ll'
@@ -45,3 +46,8 @@ alias a="tmux a"
 alias x="exit"
 alias i="pnpm i"
 alias todo="nvim ~/todo.md"
+alias buu="brew update && brew upgrade"
+alias scripts="jq .scripts package.json"
+alias cl="claude --dangerously-skip-permissions"
+alias clr="claude --dangerously-skip-permissions --resume"
+alias conflicts="claude --dangerously-skip-permissions \"We just merged next (upstream) into this older feture branch and there are conflicts that need to be resolved. PLease review the conflicts in depth and provide a plan to resolve them\""
