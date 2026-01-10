@@ -8,9 +8,6 @@ function addPath() {
 
 # Only set git configs if they're not already set
 if [ -z "$(git config --global --get core.pager 2>/dev/null)" ]; then
-  git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
-  git config --global diff.tool vscode
-  git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
   git config --global user.email "jarred.kenny@tracktile.io"
   git config --global user.name "Jarred Kenny"
   git config --global pull.rebase true
@@ -23,6 +20,8 @@ if [ -z "$(git config --global --get core.pager 2>/dev/null)" ]; then
   git config --global gpg.format ssh
   git config --global user.signingkey $HOME/.ssh/id_rsa
   git config --global push.autoSetupRemote true
+  git config --global diff.tool critique
+  git config --global difftool.critique.cmd 'critique difftool "$LOCAL" "$REMOTE"'
 fi
 
 

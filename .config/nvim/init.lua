@@ -27,6 +27,17 @@ vim.opt.cmdheight = 0
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "●",
+		spacing = 2,
+	},
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+})
+
 local map = vim.keymap.set
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -40,6 +51,18 @@ require("lazy").setup({
 	"tpope/vim-sleuth",
 	{ "shortcuts/no-neck-pain.nvim" },
 	{
+		"webhooked/kanso.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.api.nvim_create_autocmd("VimEnter", {
+				callback = function()
+					vim.cmd("colorscheme kanso-ink")
+				end,
+			})
+		end,
+	},
+	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -52,7 +75,6 @@ require("lazy").setup({
 		event = "VimEnter",
 		config = function()
 			require("dashboard").setup({
-				-- config
 				config = {
 					header = {},
 					week_header = {},
@@ -113,41 +135,10 @@ require("lazy").setup({
 		opts = {},
 	},
 	{
-		"RRethy/nvim-base16",
-		init = function()
-			-- vim.cmd.colorscheme("base16-catppuccin")
-		end,
-	},
-	{
-		"rebelot/kanagawa.nvim",
-		init = function()
-			-- vim.cmd.colorscheme("kanagawa")
-		end,
-	},
-	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		init = function()
 			-- vim.cmd.colorscheme("catppuccin-mocha")
-		end,
-	},
-	{
-		"vague2k/vague.nvim",
-		config = function()
-			require("vague").setup({
-				vim.cmd.colorscheme("vague"),
-			})
-		end,
-	},
-	{
-		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("nvim-tree").setup({
-				update_focused_file = {
-					enable = true,
-				},
-			})
 		end,
 	},
 	{
@@ -191,6 +182,11 @@ require("lazy").setup({
 		config = function()
 			require("scrollbar").setup({})
 		end,
+	},
+	{
+		"esmuellert/codediff.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		cmd = "CodeDiff",
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -258,6 +254,10 @@ require("lazy").setup({
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
 		end,
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -456,21 +456,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"azorng/goose.nvim",
-		config = function()
-			require("goose").setup({})
-		end,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					anti_conceal = { enabled = false },
-				},
-			},
-		},
-	},
-	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -561,53 +546,6 @@ require("lazy").setup({
 	},
 })
 
--- Default configuration with all available options
-require("goose").setup({
-	default_global_keymaps = true, -- If false, disables all default global keymaps
-	keymap = {
-		global = {
-			toggle = "<leader>gg", -- Open goose. Close if opened
-			open_input = "<leader>gi", -- Opens and focuses on input window on insert mode
-			open_input_new_session = "<leader>gI", -- Opens and focuses on input window on insert mode. Creates a new session
-			open_output = "<leader>go", -- Opens and focuses on output window
-			toggle_focus = "<leader>gt", -- Toggle focus between goose and last window
-			close = "<leader>gq", -- Close UI windows
-			toggle_fullscreen = "<leader>gf", -- Toggle between normal and fullscreen mode
-			select_session = "<leader>gs", -- Select and load a goose session
-			goose_mode_chat = "<leader>gmc", -- Set goose mode to `chat`. (Tool calling disabled. No editor context besides selections)
-			goose_mode_auto = "<leader>gma", -- Set goose mode to `auto`. (Default mode with full agent capabilities)
-			configure_provider = "<leader>gp", -- Quick provider and model switch from predefined list
-			diff_open = "<leader>gd", -- Opens a diff tab of a modified file since the last goose prompt
-			diff_next = "<leader>g]", -- Navigate to next file diff
-			diff_prev = "<leader>g[", -- Navigate to previous file diff
-			diff_close = "<leader>gc", -- Close diff view tab and return to normal editing
-			diff_revert_all = "<leader>gra", -- Revert all file changes since the last goose prompt
-			diff_revert_this = "<leader>grt", -- Revert current file changes since the last goose prompt
-		},
-		window = {
-			submit = "<cr>", -- Submit prompt
-			close = "<esc>", -- Close UI windows
-			stop = "<C-c>", -- Stop goose while it is running
-			next_message = "]]", -- Navigate to next message in the conversation
-			prev_message = "[[", -- Navigate to previous message in the conversation
-			mention_file = "@", -- Pick a file and add to context. See File Mentions section
-			toggle_pane = "<tab>", -- Toggle between input and output panes
-			prev_prompt_history = "<up>", -- Navigate to previous prompt in history
-			next_prompt_history = "<down>", -- Navigate to next prompt in history
-		},
-	},
-	ui = {
-		window_width = 0.35, -- Width as percentage of editor width
-		input_height = 0.15, -- Input height as percentage of window height
-		fullscreen = false, -- Start in fullscreen mode (default: false)
-		layout = "right", -- Options: "center" or "right"
-		floating_height = 0.8, -- Height as percentage of editor height for "center" layout
-		display_model = true, -- Display model name on top winbar
-		display_goose_mode = true, -- Display mode on top winbar: auto|chat
-	},
-	providers = {},
-})
-
 vim.cmd("cnoreabbrev W w")
 vim.cmd("cnoreabbrev Q q")
 vim.cmd("cnoreabbrev Qw wq")
@@ -619,14 +557,14 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic m
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 map("n", "<leader>t", [[:ToggleTerm<CR>]], {})
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-map("n", "<leader>G", [[:DiffviewToggle<CR>]], {})
-map("n", "<leader>n", [[:NvimTreeToggle<CR>]], {})
 map("n", "<leader>/", [[:CommentToggle<CR>]], {})
 map("v", "<leader>/", [[:CommentToggle<CR>]], {})
 map("n", "<leader>f", [[:Telescope git_files<CR>]], {})
+map("n", "<leader>fb", [[:Telescope file_browser<CR>]], {})
 map("n", "<leader>b", [[:Telescope buffers<CR>]], {})
 map("n", "<leader>g", [[:Telescope live_grep<CR>]], {})
 map("n", "<leader>cs", [[:Telescope colorscheme<CR>]], {})
+map("n", "<leader>gd", [[:CodeDiff<CR>]], {})
 map("n", "<C-S-Up>", ":MoveLine(-1)<CR>", {})
 map("n", "<C-S-Down>", ":MoveLine(1)<CR>", {})
 map("v", "<C-S-Up>", ":MoveBlock(-1)<CR>", {})
@@ -654,16 +592,3 @@ map("n", "<C-s>", ":w<CR>", {})
 map("n", "<C-w>", ":w<CR>", {})
 map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
 map("n", "<C-d>", "<C-d>", {})
-
-vim.cmd(":hi WinSeparator guibg=#1d1f21 guifg=#1d1f21")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-
-vim.opt.fillchars = { eob = " " }
---
-vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none", fg = "grey" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "grey" })
-vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none", fg = "grey" })
