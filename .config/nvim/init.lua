@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -70,20 +72,21 @@ require("lazy").setup({
 			require("bufferline").setup({})
 		end,
 	},
-	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("dashboard").setup({
-				config = {
-					header = {},
-					week_header = {},
-					footer = {},
-				},
-			})
-		end,
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
-	},
+	-- Dashboard disabled in favor of telescope file_browser on startup
+	-- {
+	-- 	"nvimdev/dashboard-nvim",
+	-- 	event = "VimEnter",
+	-- 	config = function()
+	-- 		require("dashboard").setup({
+	-- 			config = {
+	-- 				header = {},
+	-- 				week_header = {},
+	-- 				footer = {},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -222,6 +225,7 @@ require("lazy").setup({
 			})
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
+			pcall(require("telescope").load_extension, "file_browser")
 			local builtin = require("telescope.builtin")
 			map("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			map("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
@@ -592,3 +596,21 @@ map("n", "<C-s>", ":w<CR>", {})
 map("n", "<C-w>", ":w<CR>", {})
 map("t", "<Esc><Esc>", "<C-\\><C-n>", {})
 map("n", "<C-d>", "<C-d>", {})
+
+-- Open telescope file_browser when nvim opens without args or with a directory
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		local arg = vim.fn.argv(0)
+		if arg == "" or vim.fn.isdirectory(arg) == 1 then
+			vim.defer_fn(function()
+				if vim.fn.bufname() == "" or vim.fn.isdirectory(vim.fn.bufname()) == 1 then
+					vim.cmd("bdelete")
+				end
+				require("telescope").extensions.file_browser.file_browser({
+					path = arg ~= "" and arg or vim.fn.getcwd(),
+					cwd = arg ~= "" and arg or vim.fn.getcwd(),
+				})
+			end, 0)
+		end
+	end,
+})
