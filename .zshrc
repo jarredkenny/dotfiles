@@ -24,12 +24,13 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 export LIBVIRT_DEFAULT_URI="qemu:///session"
-export JAVA_HOME="/opt/homebrew/opt/openjdk@11/"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@17"
 export ANDROID_HOME="/Users/jarred/Library/Android/sdk"
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export ANDROID_AVD_HOME=~/.android/avd
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+addPath $JAVA_HOME/bin
 addPath $ANDROID_HOME/emulator
 addPath $ANDROID_HOME/cmdline-tools/latest/bin
 addPath $ANDROID_HOME/platform-tools
@@ -95,5 +96,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-# direnv hook for automatic env loading
-eval "$(direnv hook zsh)"
+
+export NODE_ENV=development
