@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PROMPT="We just merged next (upstream) into this older feture branch and there are conflicts that need to be resolved. PLease review the conflicts in depth and provide a plan to resolve them"
+claude --dangerously-skip-permissions "$PROMPT"

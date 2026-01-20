@@ -1,0 +1,5 @@
+#!/bin/bash
+
+MR=$1
+PROMPT="Use the gitlab-mr-prepare skill to prepare this MR: $MR"
+claude --dangerously-skip-permissions "$PROMPT"
