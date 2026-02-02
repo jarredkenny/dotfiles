@@ -1,0 +1,52 @@
+#!/bin/bash
+# tmux-worktree-prompt - Modal UI for worktree creation using fzf
+
+BASE_DIR="$HOME/Code/tracktile/platform"
+
+# Step 1: Get worktree name via fzf input
+WORKTREE_NAME=$(echo "" | fzf --print-query \
+    --height=100% \
+    --layout=reverse \
+    --border=rounded \
+    --border-label=" New Worktree " \
+    --header="Enter worktree name" \
+    --header-first \
+    --prompt="Name: " \
+    --pointer="" \
+    --no-info \
+    --color='border:#EDA685,header:#b5bcc9,prompt:#fbd4b8,label:#EDA685' \
+    | head -1)
+
+if [ -z "$WORKTREE_NAME" ]; then
+    exit 0
+fi
+
+# Step 2: Get branches and let user select base branch
+cd "$BASE_DIR" || exit 1
+
+BRANCHES=$(git branch -r --format='%(refname:short)' 2>/dev/null | sed 's|origin/||' | sort -u)
+DEFAULT_BRANCH="prerelease"
+
+BASE_BRANCH=$(echo "$BRANCHES" | fzf \
+    --height=100% \
+    --layout=reverse \
+    --border=rounded \
+    --border-label=" Select Base Branch " \
+    --header="Creating worktree: $WORKTREE_NAME" \
+    --header-first \
+    --prompt="Branch: " \
+    --query="$DEFAULT_BRANCH" \
+    --pointer=">" \
+    --color='border:#EDA685,header:#b5bcc9,prompt:#fbd4b8,label:#EDA685,pointer:#9fe8c3')
+
+if [ -z "$BASE_BRANCH" ]; then
+    exit 0
+fi
+
+# Step 3: Get initial prompt for Claude via editor
+PROMPT_FILE="$HOME/.cache/worktree-prompt-$$"
+mkdir -p "$HOME/.cache"
+
+nvim --clean "$PROMPT_FILE"
+
+~/.scripts/tmux-worktree-create "$WORKTREE_NAME" "$BASE_BRANCH" "$PROMPT_FILE"

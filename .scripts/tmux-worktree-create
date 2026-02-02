@@ -1,0 +1,27 @@
+#!/bin/bash
+# tmux-worktree-create - Create a new worktree with a dedicated tmux window
+
+WORKTREE_NAME="$1"
+BASE_BRANCH="${2:-prerelease}"
+PROMPT_FILE="$3"
+BASE_DIR="$HOME/Code/tracktile/platform"
+WORKTREE_PATH="$BASE_DIR/$WORKTREE_NAME"
+
+if [ -z "$WORKTREE_NAME" ]; then
+    exit 1
+fi
+
+# Create new window in background (-d) with the worktree name
+tmux new-window -d -n "$WORKTREE_NAME" -c "$BASE_DIR"
+
+# Get the new window's target
+TARGET="$WORKTREE_NAME"
+
+# Split the window vertically (creates left and right panes)
+tmux split-window -d -h -t "$TARGET" -c "$BASE_DIR"
+
+# Right pane (pane 2) - run wtm create
+tmux send-keys -t "$TARGET.2" "wtm create --from $BASE_BRANCH $WORKTREE_NAME" Enter
+
+# Left pane (pane 1) - run helper script that waits, cds, and starts claude
+tmux send-keys -t "$TARGET.1" "~/.scripts/tmux-worktree-start-claude '$WORKTREE_PATH' '$PROMPT_FILE'" Enter

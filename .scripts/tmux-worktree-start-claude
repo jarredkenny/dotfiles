@@ -1,0 +1,23 @@
+#!/bin/bash
+# tmux-worktree-start-claude - Wait for worktree and start claude with optional prompt file
+
+WORKTREE_PATH="$1"
+PROMPT_FILE="$2"
+CLAUDE="$HOME/.local/bin/claude --dangerously-skip-permissions"
+
+# Wait for worktree to exist
+while [ ! -d "$WORKTREE_PATH" ]; do
+    sleep 1
+done
+
+cd "$WORKTREE_PATH" || exit 1
+
+# Start claude with prompt if file exists and has content
+if [ -n "$PROMPT_FILE" ] && [ -f "$PROMPT_FILE" ] && [ -s "$PROMPT_FILE" ]; then
+    PROMPT=$(cat "$PROMPT_FILE")
+    rm -f "$PROMPT_FILE"
+    exec $CLAUDE "$PROMPT"
+else
+    [ -n "$PROMPT_FILE" ] && rm -f "$PROMPT_FILE"
+    exec $CLAUDE
+fi
