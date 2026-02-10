@@ -1,0 +1,46 @@
+# NvChad PastelDark Theme for Ghostty
+# Ported from NvChad base46 pastelDark theme
+
+# Background and foreground
+background = #131a21
+foreground = #ced4df
+
+# Cursor
+cursor-color = #ced4df
+cursor-text = #131a21
+
+# Selection
+selection-background = #363d44
+selection-foreground = #ced4df
+
+# Black
+palette = 0=#131a21
+palette = 8=#4f565d
+
+# Red
+palette = 1=#ef8891
+palette = 9=#e88e9b
+
+# Green
+palette = 2=#9ce5c0
+palette = 10=#9fe8c3
+
+# Yellow
+palette = 3=#f5d595
+palette = 11=#fbdf90
+
+# Blue
+palette = 4=#a3b8ef
+palette = 12=#99aee5
+
+# Magenta/Purple
+palette = 5=#c2a2e3
+palette = 13=#c2a2e3
+
+# Cyan
+palette = 6=#abb9e0
+palette = 14=#b5c3ea
+
+# White
+palette = 7=#b5bcc9
+palette = 15=#d3d9e4
