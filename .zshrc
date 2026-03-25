@@ -94,7 +94,8 @@ setopt appendhistory
 export BUN_INSTALL="$HOME/.tools/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
 
 
 export NODE_ENV=development

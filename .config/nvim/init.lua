@@ -51,7 +51,7 @@ vim.diagnostic.config({
 local map = vim.keymap.set
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
 	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
 end ---@diagnostic disable-next-line: undefined-field
@@ -393,7 +393,11 @@ require("lazy").setup({
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
-			{ "folke/neodev.nvim", opts = {} },
+			{
+				"folke/lazydev.nvim",
+				ft = "lua",
+				opts = {},
+			},
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -595,6 +599,7 @@ require("lazy").setup({
 					end, { "i", "s" }),
 				}),
 				sources = {
+					{ name = "lazydev", group_index = 0 },
 					{ name = "supermaven" },
 					{ name = "nvim_lsp" },
 					{ name = "buffer", keyword_length = 3 },
