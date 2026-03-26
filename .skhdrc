@@ -13,12 +13,9 @@ ctrl + shift + cmd - up : yabai -m window --swap north
 ctrl + shift + cmd - down : yabai -m window --swap south
 
 ctrl - 1 : open -a "Ghostty"
-ctrl - 2 : open -a "Zed" 
+ctrl - 2 : open -a "Claude" 
 ctrl - 3 : open -a "Google Chrome"
-ctrl - 4 : open -a "Slack" 
-ctrl - 5 : open -a "Spotify" 
-ctrl - 6 : open -a "Claude"
+ctrl - 4 : open -a "Linear" 
+ctrl - 5 : open -a "Slack" 
+ctrl - 6 : open -a "Spark Desktop"
 ctrl - 7 : open -a "Notion Calendar"
-ctrl - 8 : open -a "TablePlus" 
-ctrl - 9 : open -a "Spark"
-ctrl - 0 : open -a "Todoist"
